@@ -10,7 +10,7 @@ Henrique Samecima
 
 Walison Moura
 
-Pedro
+Pedro Bertanhi
 
 Cássia de Jesus
 

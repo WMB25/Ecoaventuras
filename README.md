@@ -4,12 +4,17 @@
   Jogo Educacional utilizando Alegro
 
   ## Integrantes
-    - Renan Horta
-    - Henrique Samecima
-    - Walison Moura
-    - Pedro
-    - Cássia de Jesus
-    - Matheus Sato
+Renan Horta
+
+Henrique Samecima
+
+Walison Moura
+
+Pedro
+
+Cássia de Jesus
+
+Matheus Sato
 
   ## Sobre o Projeto
 

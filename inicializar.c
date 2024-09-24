@@ -5,11 +5,14 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 
-// ESTE ARQUIVO (FUNÇÃO) VAI VERIFICAR SE TUDO INICIALIZOU TUDO OK, CASO NÃO TENHA INICIALIZADO ELE MOSTRARA OQUE DEU PROBLEMA
+// Adicione as declarações das variáveis de som aqui
+ALLEGRO_SAMPLE* som_menu = NULL;
+ALLEGRO_SAMPLE_INSTANCE* inst_som_menu = NULL;
 
-int verificador_inicializasao_allegro(ALLEGRO_BITMAP** background, ALLEGRO_BITMAP** config_background,
+int inicializar_componentes_allegro(ALLEGRO_BITMAP** background, ALLEGRO_BITMAP** config_background,
     ALLEGRO_BITMAP** choose_maps_background, ALLEGRO_DISPLAY** display,
     ALLEGRO_EVENT_QUEUE** event_queue) {
+
     if (!al_init()) {
         fprintf(stderr, "Falha ao inicializar Allegro!\n");
         return -1;
@@ -66,11 +69,34 @@ int verificador_inicializasao_allegro(ALLEGRO_BITMAP** background, ALLEGRO_BITMA
         return -1;
     }
 
+    // CARREGA SONS
+    som_menu = al_load_sample("menu.ogg");
+    if (!som_menu) {
+        fprintf(stderr, "Falha ao carregar o arquivo de áudio!\n");
+        al_destroy_bitmap(*background);
+        al_destroy_bitmap(*config_background);
+        al_destroy_bitmap(*choose_maps_background);
+        return -1;
+    }
+
+    // CRIA A INSTANCIA DO SONS
+    inst_som_menu = al_create_sample_instance(som_menu);
+    if (!inst_som_menu) {
+        fprintf(stderr, "Falha ao criar a instância de áudio!\n");
+        al_destroy_sample(som_menu);
+        al_destroy_bitmap(*background);
+        al_destroy_bitmap(*config_background);
+        al_destroy_bitmap(*choose_maps_background);
+        return -1;
+    }
+
     int largura_da_imagem = al_get_bitmap_width(*background);
     int altura_da_imagem = al_get_bitmap_height(*background);
     *display = al_create_display(largura_da_imagem, altura_da_imagem);
     if (!*display) {
         fprintf(stderr, "Falha ao criar a janela!\n");
+        al_destroy_sample(som_menu);
+        al_destroy_sample_instance(inst_som_menu);
         al_destroy_bitmap(*background);
         al_destroy_bitmap(*config_background);
         al_destroy_bitmap(*choose_maps_background);
@@ -80,6 +106,8 @@ int verificador_inicializasao_allegro(ALLEGRO_BITMAP** background, ALLEGRO_BITMA
     *event_queue = al_create_event_queue();
     if (!*event_queue) {
         fprintf(stderr, "Falha ao criar a fila de eventos!\n");
+        al_destroy_sample(som_menu);
+        al_destroy_sample_instance(inst_som_menu);
         al_destroy_bitmap(*background);
         al_destroy_bitmap(*config_background);
         al_destroy_bitmap(*choose_maps_background);
@@ -88,3 +116,4 @@ int verificador_inicializasao_allegro(ALLEGRO_BITMAP** background, ALLEGRO_BITMA
     }
 
     return 0;
+}

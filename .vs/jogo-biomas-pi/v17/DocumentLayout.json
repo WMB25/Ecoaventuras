@@ -18,8 +18,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -28,9 +32,10 @@
               "RelativeDocumentMoniker": "inicializar.c",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\inicializar.c",
               "RelativeToolTip": "inicializar.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-09-24T04:14:18.689Z"
+              "WhenOpened": "2024-09-24T04:14:18.689Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,7 +45,7 @@
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\main.c",
               "RelativeToolTip": "main.c",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-09-18T03:03:05.767Z",
               "EditorCaption": ""

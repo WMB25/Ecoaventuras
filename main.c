@@ -19,10 +19,9 @@ ALLEGRO_EVENT_QUEUE* event_queue = NULL;
 
 int largura_da_imagem = 0;
 int altura_da_imagem = 0;
-int current_background = 0; // 0: Imagem Menu, 1: Imagem Config, 2: Imagem Choose_maps
-bool running = true;
+int imagem_fundo = 0; // 0: Imagem Menu, 1: Imagem Config, 2: Imagem Choose_maps
+bool jogo_rodando = true; //Mantem o programa em execução ate alguém fecha-lo
 bool play_som_menu = false;
-
 
 // STRUCT DE AREA CLICAVEL COM O MOUSE
 struct area {
@@ -64,7 +63,7 @@ int main(int argc, char** argv) {
     al_attach_sample_instance_to_mixer(inst_som_menu, al_get_default_mixer());
 
     // TOCA O SOM SO NO MENU
-    if (current_background == 0 && play_som_menu) {
+    if (imagem_fundo == 0 && play_som_menu) {
         al_play_sample_instance(inst_som_menu);
     }
 
@@ -87,7 +86,7 @@ int main(int argc, char** argv) {
             if (event.mouse.x >= area_config.x && event.mouse.x <= area_config.x + area_config.largura &&
                 event.mouse.y >= area_config.y && event.mouse.y <= area_config.y + area_config.altura) {
                 printf("Evento --> Clique Registrado na área configurações\n");
-                current_background = 1;
+                imagem_fundo = 1;
                 if (play_som_menu) {
                     al_stop_sample_instance(inst_som_menu);
                     play_som_menu = false;
@@ -98,7 +97,7 @@ int main(int argc, char** argv) {
             if (event.mouse.x >= area_mapa.x && event.mouse.x <= area_mapa.x + area_mapa.largura &&
                 event.mouse.y >= area_mapa.y && event.mouse.y <= area_mapa.y + area_mapa.altura) {
                 printf("Evento --> Clique Registrado na área jogar\n");
-                current_background = 2;
+                imagem_fundo = 2;
                 if (play_som_menu) {
                     al_stop_sample_instance(inst_som_menu);
                     play_som_menu = false;
@@ -106,17 +105,17 @@ int main(int argc, char** argv) {
             }
 
             // VAI VERIFICAR SE A AREA CLICADA FOI A AREA DE VOLTAR PARA O MENU
-            if (current_background == 1 && event.mouse.x >= area_voltar.x && event.mouse.x <= area_voltar.x + area_voltar.largura &&
+            if (imagem_fundo == 1 && event.mouse.x >= area_voltar.x && event.mouse.x <= area_voltar.x + area_voltar.largura &&
                 event.mouse.y >= area_voltar.y && event.mouse.y <= area_voltar.y + area_voltar.altura) {
                 printf("Evento --> Clique Registrado na área voltar\n");
-                current_background = 0;
+                imagem_fundo = 0;
                 if (play_som_menu) {
                     al_play_sample_instance(inst_som_menu);
                 }
             }
 
             // VAI VERIFICAR SE A AREA CLICADA FOI A AREA DE DESLIGAR SOM
-            if (current_background == 1 && event.mouse.x >= area_desligar_som.x && event.mouse.x <= area_desligar_som.x + area_desligar_som.largura &&
+            if (imagem_fundo == 1 && event.mouse.x >= area_desligar_som.x && event.mouse.x <= area_desligar_som.x + area_desligar_som.largura &&
                 event.mouse.y >= area_desligar_som.y && event.mouse.y <= area_desligar_som.y + area_desligar_som.altura) {
                 printf("Evento --> Clique Registrado na área desligar som\n");
                 al_stop_sample_instance(inst_som_menu);
@@ -124,7 +123,7 @@ int main(int argc, char** argv) {
             }
 
             // VAI VERIFICAR SE A AREA CLICADA FOI A AREA DE LIGAR SOM
-            if (current_background == 1 && event.mouse.x >= area_ligar_som.x && event.mouse.x <= area_ligar_som.x + area_ligar_som.largura &&
+            if (imagem_fundo == 1 && event.mouse.x >= area_ligar_som.x && event.mouse.x <= area_ligar_som.x + area_ligar_som.largura &&
                 event.mouse.y >= area_ligar_som.y && event.mouse.y <= area_ligar_som.y + area_ligar_som.altura) {
                 printf("Evento --> Clique Registrado na área ligar som\n");
                 if (!play_som_menu) {
@@ -135,13 +134,13 @@ int main(int argc, char** argv) {
         }
 
         al_clear_to_color(al_map_rgb(0, 0, 0)); 
-        if (current_background == 0) {
+        if (imagem_fundo == 0) {
             al_draw_bitmap(background, 0, 0, 0);
         }
-        else if (current_background == 1) {
+        else if (imagem_fundo == 1) {
             al_draw_bitmap(config_background, 0, 0, 0);
         }
-        else if (current_background == 2) {
+        else if (imagem_fundo == 2) {
             al_draw_bitmap(choose_maps_background, 0, 0, 0);
         }
 

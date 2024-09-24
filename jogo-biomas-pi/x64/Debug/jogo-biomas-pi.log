@@ -6,50 +6,50 @@ C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(15,17): error C2082: rede
 C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(16,18): error C2082: redefinição de parâmetro formal 'display'
 C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(17,22): error C2082: redefinição de parâmetro formal 'event_queue'
 C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(19,5): error C2374: 'largura_da_imagem': redefinição; várias inicializações
-      C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(67,9):
+      C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(69,9):
       consulte a declaração de 'largura_da_imagem'
   
 C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(20,5): error C2374: 'altura_da_imagem': redefinição; várias inicializações
-      C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(68,9):
+      C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(70,9):
       consulte a declaração de 'altura_da_imagem'
   
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(51,33): error C2143: erro de sintaxe: ';' ausente antes de '{'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,43): warning C4047: 'função': 'ALLEGRO_BITMAP **' difere em níveis de indireção de 'ALLEGRO_BITMAP ***'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,43): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,56): warning C4047: 'função': 'ALLEGRO_BITMAP **' difere em níveis de indireção de 'ALLEGRO_BITMAP ***'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,56): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 2
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,76): warning C4047: 'função': 'ALLEGRO_BITMAP **' difere em níveis de indireção de 'ALLEGRO_BITMAP ***'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,76): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 3
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,101): warning C4047: 'função': 'ALLEGRO_DISPLAY **' difere em níveis de indireção de 'ALLEGRO_DISPLAY ***'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,101): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 4
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,111): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE **' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE ***'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(53,111): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 5
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(80,30): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE *' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(80,30): warning C4024: 'al_register_event_source': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(80,71): warning C4047: 'função': 'ALLEGRO_DISPLAY *' difere em níveis de indireção de 'ALLEGRO_DISPLAY **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(80,71): warning C4024: 'al_get_display_event_source': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(81,30): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE *' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(81,30): warning C4024: 'al_register_event_source': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(86,27): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE *' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(86,27): warning C4024: 'al_wait_for_event': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(147,28): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(147,28): warning C4024: 'al_draw_bitmap': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(150,28): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(150,28): warning C4024: 'al_draw_bitmap': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(153,28): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(153,28): warning C4024: 'al_draw_bitmap': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(161,23): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(161,23): warning C4024: 'al_destroy_bitmap': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(162,23): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(162,23): warning C4024: 'al_destroy_bitmap': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(163,23): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(163,23): warning C4024: 'al_destroy_bitmap': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(164,24): warning C4047: 'função': 'ALLEGRO_DISPLAY *' difere em níveis de indireção de 'ALLEGRO_DISPLAY **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(164,24): warning C4024: 'al_destroy_display': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(165,28): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE *' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE **'
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(165,28): warning C4024: 'al_destroy_event_queue': tipos diferentes para parâmetro formal e real 1
-C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(10,40): error C1075: '{': nenhum token correspondente encontrado
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(62,33): error C2143: erro de sintaxe: ';' ausente antes de '{'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,43): warning C4047: 'função': 'ALLEGRO_BITMAP **' difere em níveis de indireção de 'ALLEGRO_BITMAP ***'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,43): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,56): warning C4047: 'função': 'ALLEGRO_BITMAP **' difere em níveis de indireção de 'ALLEGRO_BITMAP ***'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,56): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 2
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,76): warning C4047: 'função': 'ALLEGRO_BITMAP **' difere em níveis de indireção de 'ALLEGRO_BITMAP ***'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,76): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 3
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,101): warning C4047: 'função': 'ALLEGRO_DISPLAY **' difere em níveis de indireção de 'ALLEGRO_DISPLAY ***'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,101): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 4
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,111): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE **' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE ***'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(64,111): warning C4024: 'verificador_inicializasao_allegro': tipos diferentes para parâmetro formal e real 5
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(99,30): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE *' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(99,30): warning C4024: 'al_register_event_source': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(99,71): warning C4047: 'função': 'ALLEGRO_DISPLAY *' difere em níveis de indireção de 'ALLEGRO_DISPLAY **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(99,71): warning C4024: 'al_get_display_event_source': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(100,30): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE *' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(100,30): warning C4024: 'al_register_event_source': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(105,27): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE *' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(105,27): warning C4024: 'al_wait_for_event': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(166,28): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(166,28): warning C4024: 'al_draw_bitmap': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(169,28): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(169,28): warning C4024: 'al_draw_bitmap': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(172,28): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(172,28): warning C4024: 'al_draw_bitmap': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(180,23): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(180,23): warning C4024: 'al_destroy_bitmap': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(181,23): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(181,23): warning C4024: 'al_destroy_bitmap': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(182,23): warning C4047: 'função': 'ALLEGRO_BITMAP *' difere em níveis de indireção de 'ALLEGRO_BITMAP **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(182,23): warning C4024: 'al_destroy_bitmap': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(183,24): warning C4047: 'função': 'ALLEGRO_DISPLAY *' difere em níveis de indireção de 'ALLEGRO_DISPLAY **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(183,24): warning C4024: 'al_destroy_display': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(184,28): warning C4047: 'função': 'ALLEGRO_EVENT_QUEUE *' difere em níveis de indireção de 'ALLEGRO_EVENT_QUEUE **'
+C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(184,28): warning C4024: 'al_destroy_event_queue': tipos diferentes para parâmetro formal e real 1
+C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(12,40): error C1075: '{': nenhum token correspondente encontrado
   (compilando o arquivo fonte 'main.c')
   
-C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(10,40): error C1075: '{': nenhum token correspondente encontrado
+C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(12,40): error C1075: '{': nenhum token correspondente encontrado
   Gerando Código...

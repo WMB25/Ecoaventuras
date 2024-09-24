@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\inicializar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:inicializar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\inicializar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:inicializar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "inicializar.c",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\inicializar.c",
               "RelativeDocumentMoniker": "inicializar.c",
@@ -35,13 +35,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "main.c",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\main.c",
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\main.c",
               "RelativeToolTip": "main.c",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADAAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-09-18T03:03:05.767Z",
               "EditorCaption": ""

@@ -5,9 +5,10 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 
+//Incluir Funções de outros arquivos
 #include "inicializar.c"
 
-// AREA --> VARIAVEIS
+// AREA --> VARIAVEIS - PONTEIROS
 ALLEGRO_SAMPLE* som_menu = NULL;
 ALLEGRO_SAMPLE_INSTANCE* inst_som_menu = NULL;
 ALLEGRO_BITMAP* background = NULL;
@@ -20,39 +21,30 @@ int largura_da_imagem = 0;
 int altura_da_imagem = 0;
 int current_background = 0; // 0: Imagem Menu, 1: Imagem Config, 2: Imagem Choose_maps
 bool running = true;
-bool play_som_menu = false; // o audio começa desligado
+bool play_som_menu = false;
 
-// AREA --> Posições e dimensões das áreas clicáveis
-int area_config_x = 515;
-int area_config_y = 405;
-int area_config_width = 250;
-int area_config_height = 100;
 
-int area_mapa_x = 541;
-int area_mapa_y = 290;
-int area_mapa_largura = 200;
-int area_mapa_altura = 100;
-
-int area_desligar_som_x = 320;
-int area_desligar_som_y = 600;
-int area_desligar_som_largura = 220;
-int area_desligar_som_altura = 70;
-
-int area_ligar_som_x = 740;
-int area_ligar_som_y = 600;
-int area_ligar_som_largura = 220;
-int area_ligar_som_altura = 70;
-
-int area_voltar_x = 165;
-int area_voltar_y = 40;
-int area_voltar_largura = 200;
-int area_voltar_altura = 90;
+// STRUCT DE AREA CLICAVEL COM O MOUSE
+struct area {
+    int x;
+    int y;
+    int largura;
+    int altura;
+};
 
 int main(int argc, char** argv) {
 
-    if (verificador_inicializasao_allegro(&background, &config_background, &choose_maps_background, &display, &event_queue) != 0) { //FUNÇÃO DO INICIALIZAR.C
+    //FUNÇÃO DO INICIALIZAR.C
+    if (verificador_inicializasao_allegro(&background, &config_background, &choose_maps_background, &display, &event_queue) != 0) {
         return -1;
     }
+
+    // STRUCTS
+    struct area area_config = { 515, 405, 250, 100 };
+    struct area area_mapa = { 541, 290, 200, 100 };
+    struct area area_desligar_som = { 320, 600, 220, 70 };
+    struct area area_ligar_som = { 740, 600, 220, 70 };
+    struct area area_voltar = { 165, 40, 200, 90 };
 
     // CARREGA SONS
     som_menu = al_load_sample("menu.ogg");
@@ -89,11 +81,11 @@ int main(int argc, char** argv) {
             running = false;
         }
 
-        // Se o mouse foi clicado, entra no if
+        // VERIFICA SE O MOUSE FOI CLICADO
         if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
             // VAI VERIFICAR SE A AREA CLICADA FOI A AREA DE CONFIGURAÇÕES
-            if (event.mouse.x >= area_config_x && event.mouse.x <= area_config_x + area_config_width &&
-                event.mouse.y >= area_config_y && event.mouse.y <= area_config_y + area_config_height) {
+            if (event.mouse.x >= area_config.x && event.mouse.x <= area_config.x + area_config.largura &&
+                event.mouse.y >= area_config.y && event.mouse.y <= area_config.y + area_config.altura) {
                 printf("Evento --> Clique Registrado na área configurações\n");
                 current_background = 1;
                 if (play_som_menu) {
@@ -103,8 +95,8 @@ int main(int argc, char** argv) {
             }
 
             // VAI VERIFICAR SE A AREA CLICADA FOI A AREA DE JOGAR
-            if (event.mouse.x >= area_mapa_x && event.mouse.x <= area_mapa_x + area_mapa_largura &&
-                event.mouse.y >= area_mapa_y && event.mouse.y <= area_mapa_y + area_mapa_altura) {
+            if (event.mouse.x >= area_mapa.x && event.mouse.x <= area_mapa.x + area_mapa.largura &&
+                event.mouse.y >= area_mapa.y && event.mouse.y <= area_mapa.y + area_mapa.altura) {
                 printf("Evento --> Clique Registrado na área jogar\n");
                 current_background = 2;
                 if (play_som_menu) {
@@ -114,8 +106,8 @@ int main(int argc, char** argv) {
             }
 
             // VAI VERIFICAR SE A AREA CLICADA FOI A AREA DE VOLTAR PARA O MENU
-            if (current_background == 1 && event.mouse.x >= area_voltar_x && event.mouse.x <= area_voltar_x + area_voltar_largura &&
-                event.mouse.y >= area_voltar_y && event.mouse.y <= area_voltar_y + area_voltar_altura) {
+            if (current_background == 1 && event.mouse.x >= area_voltar.x && event.mouse.x <= area_voltar.x + area_voltar.largura &&
+                event.mouse.y >= area_voltar.y && event.mouse.y <= area_voltar.y + area_voltar.altura) {
                 printf("Evento --> Clique Registrado na área voltar\n");
                 current_background = 0;
                 if (play_som_menu) {
@@ -124,20 +116,20 @@ int main(int argc, char** argv) {
             }
 
             // VAI VERIFICAR SE A AREA CLICADA FOI A AREA DE DESLIGAR SOM
-            if (current_background == 1 && event.mouse.x >= area_desligar_som_x && event.mouse.x <= area_desligar_som_x + area_desligar_som_largura &&
-                event.mouse.y >= area_desligar_som_y && event.mouse.y <= area_desligar_som_y + area_desligar_som_altura) {
+            if (current_background == 1 && event.mouse.x >= area_desligar_som.x && event.mouse.x <= area_desligar_som.x + area_desligar_som.largura &&
+                event.mouse.y >= area_desligar_som.y && event.mouse.y <= area_desligar_som.y + area_desligar_som.altura) {
                 printf("Evento --> Clique Registrado na área desligar som\n");
-                al_stop_sample_instance(inst_som_menu); // Para o som
-                play_som_menu = false; // Atualiza a flag do som
+                al_stop_sample_instance(inst_som_menu);
+                play_som_menu = false;
             }
 
             // VAI VERIFICAR SE A AREA CLICADA FOI A AREA DE LIGAR SOM
-            if (current_background == 1 && event.mouse.x >= area_ligar_som_x && event.mouse.x <= area_ligar_som_x + area_ligar_som_largura &&
-                event.mouse.y >= area_ligar_som_y && event.mouse.y <= area_ligar_som_y + area_ligar_som_altura) {
+            if (current_background == 1 && event.mouse.x >= area_ligar_som.x && event.mouse.x <= area_ligar_som.x + area_ligar_som.largura &&
+                event.mouse.y >= area_ligar_som.y && event.mouse.y <= area_ligar_som.y + area_ligar_som.altura) {
                 printf("Evento --> Clique Registrado na área ligar som\n");
                 if (!play_som_menu) {
-                    al_play_sample_instance(inst_som_menu); // Reproduz o som
-                    play_som_menu = true; // Atualiza a flag do som
+                    al_play_sample_instance(inst_som_menu);
+                    play_som_menu = true;
                 }
             }
         }
@@ -156,6 +148,7 @@ int main(int argc, char** argv) {
         al_flip_display();
     }
 
+    // DESTROI DA MEMORIA APOS FECHAR
     al_destroy_sample(som_menu);
     al_destroy_sample_instance(inst_som_menu);
     al_destroy_bitmap(background);

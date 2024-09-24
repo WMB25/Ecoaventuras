@@ -1,0 +1,15 @@
+Como Subir Projeto no github
+
+1. Abra o git bash na pasta do jogo
+2. git status (Mostra quais arquivos foram modificados)
+3. git init
+4. git add . 
+5. git commit -m "Comentario/modificações"
+6. git pull origin main (vai verificar se ah alguma alteração no repositorio, se estiver tudo ok continue)
+7. git push origin main (vai enviar o arquivo)
+
+ATENÇÃO
+
+Sempre que for subir um arquivo novo, verifique se o repositorio esta atualizado dando git pull origin main
+
+Qualquer duvida assista: https://www.youtube.com/watch?v=EbAyAUOmUBM

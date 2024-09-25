@@ -1,11 +1,2 @@
 ﻿  main.c
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(12,17): error C2374: 'som_menu': redefinição; várias inicializações
-      C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(9,17):
-      consulte a declaração de 'som_menu'
-  
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(13,26): error C2374: 'inst_som_menu': redefinição; várias inicializações
-      C:\Users\Administrator\Documents\jogo-biomas-pi\inicializar.c(10,26):
-      consulte a declaração de 'inst_som_menu'
-  
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(37,123): error C2197: 'int inicializar_componentes_allegro(ALLEGRO_BITMAP **,ALLEGRO_BITMAP **,ALLEGRO_BITMAP **,ALLEGRO_DISPLAY **,ALLEGRO_EVENT_QUEUE **)': muitos argumentos para chamada
-C:\Users\Administrator\Documents\jogo-biomas-pi\main.c(37,134): error C2197: 'int inicializar_componentes_allegro(ALLEGRO_BITMAP **,ALLEGRO_BITMAP **,ALLEGRO_BITMAP **,ALLEGRO_DISPLAY **,ALLEGRO_EVENT_QUEUE **)': muitos argumentos para chamada
+  jogo-biomas-pi.vcxproj -> C:\Users\Administrator\Documents\jogo-biomas-pi\x64\Debug\jogo-biomas-pi.exe

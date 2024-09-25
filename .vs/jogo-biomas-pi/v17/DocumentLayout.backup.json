@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\inicializar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:inicializar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,24 +14,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "inicializar.c",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\inicializar.c",
-              "RelativeDocumentMoniker": "inicializar.c",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\inicializar.c",
-              "RelativeToolTip": "inicializar.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-09-24T04:14:18.689Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -45,7 +28,7 @@
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\main.c*",
               "RelativeToolTip": "main.c*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAEIAAAAAAAAAAIAwwEsAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-09-18T03:03:05.767Z",
               "EditorCaption": ""

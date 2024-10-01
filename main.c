@@ -95,11 +95,11 @@ int inicializar_componentes_allegro(struct AllegroRecursos* recursos) {
         al_destroy_display(recursos->display);
         return -1;
     }
-
     return 0;
 }
 
-int main(int argc, char** argv) {
+
+int main() {
 
     struct AllegroRecursos recursos;
 
@@ -114,7 +114,7 @@ int main(int argc, char** argv) {
     bool jogo_rodando = true;
     bool tocar_som_menu = false;
 
-    // STRUCTS PARA ÁREAS CLICÁVEIS
+    // STRUCTS PARA areaS CLICÁVEIS
     struct area {
         int x;
         int y;
@@ -122,7 +122,7 @@ int main(int argc, char** argv) {
         int altura;
     };
 
-    // Structs para áreas clicáveis
+    // Structs para areas clicáveis
     struct area area_config = { 515, 405, 250, 100 };
     struct area area_mapa = { 541, 290, 200, 100 };
     struct area area_desligar_som = { 320, 600, 220, 70 };
@@ -159,10 +159,10 @@ int main(int argc, char** argv) {
         }
 
         if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
-            // Verifica se clicou na área de configurações 
+            // Verifica se clicou na area de configurações 
             if (event.mouse.x >= area_config.x && event.mouse.x <= area_config.x + area_config.largura &&
                 event.mouse.y >= area_config.y && event.mouse.y <= area_config.y + area_config.altura) {
-                printf("Evento --> Clique Registrado na área configurações\n");
+                printf("Evento --> Clique Registrado na area configurações\n");
                 imagem_fundo = 1;
                 if (tocar_som_menu) {
                     al_stop_sample_instance(recursos.inst_som_menu);
@@ -170,10 +170,10 @@ int main(int argc, char** argv) {
                 }
             }
 
-            // Verifica se clicou na área de jogar
+            // Verifica se clicou na area de jogar
             if (event.mouse.x >= area_mapa.x && event.mouse.x <= area_mapa.x + area_mapa.largura &&
                 event.mouse.y >= area_mapa.y && event.mouse.y <= area_mapa.y + area_mapa.altura) {
-                printf("Evento --> Clique Registrado na área jogar\n");
+                printf("Evento --> Clique Registrado na area jogar\n");
                 imagem_fundo = 2;
                 if (tocar_som_menu) {
                     al_stop_sample_instance(recursos.inst_som_menu);
@@ -181,34 +181,34 @@ int main(int argc, char** argv) {
                 }
             }
 
-            // Verifica se clicou na área de voltar
+            // Verifica se clicou na area de voltar
             if (imagem_fundo == 1 && event.mouse.x >= area_voltar.x && event.mouse.x <= area_voltar.x + area_voltar.largura &&
                 event.mouse.y >= area_voltar.y && event.mouse.y <= area_voltar.y + area_voltar.altura) {
-                printf("Evento --> Clique Registrado na área voltar\n");
+                printf("Evento --> Clique Registrado na area voltar\n");
                 imagem_fundo = 0;
                 if (tocar_som_menu) {
                     al_play_sample_instance(recursos.inst_som_menu);
                 }
             }
 
-            // Verifica se clicou na área de desligar som
+            // Verifica se clicou na area de desligar som
             if (imagem_fundo == 1 && event.mouse.x >= area_desligar_som.x && event.mouse.x <= area_desligar_som.x + area_desligar_som.largura &&
                 event.mouse.y >= area_desligar_som.y && event.mouse.y <= area_desligar_som.y + area_desligar_som.altura) {
-                printf("Evento --> Clique Registrado na área desligar som\n");
+                printf("Evento --> Clique Registrado na area desligar som\n");
                 al_stop_sample_instance(recursos.inst_som_menu);
                 tocar_som_menu = false;
             }
 
-            // Verifica se clicou na área de ligar som
+            // Verifica se clicou na area de ligar som
             if (imagem_fundo == 1 && event.mouse.x >= area_ligar_som.x && event.mouse.x <= area_ligar_som.x + area_ligar_som.largura &&
                 event.mouse.y >= area_ligar_som.y && event.mouse.y <= area_ligar_som.y + area_ligar_som.altura) {
-                printf("Evento --> Clique Registrado na área ligar som\n");
+                printf("Evento --> Clique Registrado na area ligar som\n");
                 al_play_sample_instance(recursos.inst_som_menu);
                 tocar_som_menu = true;
             }
         }
 
-        // Desenhar a imagem de fundo de acordo com a variável imagem_fundo
+        // Desenhar a imagem de fundo
         if (imagem_fundo == 0) {
             al_draw_bitmap(recursos.background, 0, 0, 0);
         } else if (imagem_fundo == 1) {

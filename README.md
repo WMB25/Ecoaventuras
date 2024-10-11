@@ -54,4 +54,7 @@ Matheus Sato
 •	Gráficos e sons envolventes: Uso de cenários e sons que representam a biodiversidade de cada bioma, como o canto de aves, rugidos de animais, e sons de florestas.
 
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 81368845a75498e041ae3064d5054a9b3f3e1ec9

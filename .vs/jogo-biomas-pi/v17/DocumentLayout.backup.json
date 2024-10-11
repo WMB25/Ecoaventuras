@@ -28,7 +28,11 @@
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\jogo-biomas-pi\\main.c*",
               "RelativeToolTip": "main.c*",
+<<<<<<< HEAD
               "ViewState": "AgIAAIIAAAAAAAAAAAAAAA4BAAANAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAEIAAAAAAAAAAIAwwEsAAAA+AAAAAAAAAA==",
+>>>>>>> 81368845a75498e041ae3064d5054a9b3f3e1ec9
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-09-18T03:03:05.767Z",
               "EditorCaption": ""

@@ -1,2 +1,6 @@
 ﻿  main.c
-  jogo-biomas-pi.vcxproj -> C:\Users\Administrator\Documents\jogo-biomas-pi\x64\Debug\jogo-biomas-pi.exe
+C:\Users\walis\source\repos\treino_Mapa\Ecoaventuras\main.c(361,24): warning C4048: subscritos de matriz diferentes: 'int (*)[12]' e 'int [10][10]'
+C:\Users\walis\source\repos\treino_Mapa\Ecoaventuras\main.c(388,24): warning C4048: subscritos de matriz diferentes: 'int (*)[12]' e 'int [12][10]'
+C:\Users\walis\source\repos\treino_Mapa\Ecoaventuras\main.c(403,24): warning C4048: subscritos de matriz diferentes: 'int (*)[12]' e 'int [12][10]'
+C:\Users\walis\source\repos\treino_Mapa\Ecoaventuras\main.c(140,1): warning C4716: 'draw_grama': deve retornar um valor
+  jogo-biomas-pi.vcxproj -> C:\Users\walis\source\repos\treino_Mapa\Ecoaventuras\x64\Debug\jogo-biomas-pi.exe

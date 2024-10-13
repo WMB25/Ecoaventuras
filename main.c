@@ -13,6 +13,8 @@ struct AllegroRecursos {
     ALLEGRO_BITMAP* background;
     ALLEGRO_BITMAP* config_background;
     ALLEGRO_BITMAP* escolher_mapas_background;
+    ALLEGRO_BITMAP* bg_mapa_branco;
+    ALLEGRO_BITMAP* imagem_grama;
     ALLEGRO_DISPLAY* display;
     ALLEGRO_EVENT_QUEUE* event_queue;
 };
@@ -65,6 +67,18 @@ int inicializar_componentes_allegro(struct AllegroRecursos* recursos) {
         return -1;
     }
 
+    recursos->imagem_grama = al_load_bitmap("grama.png");
+    if (!recursos->imagem_grama) {
+        fprintf(stderr, "Falha ao carregar a imagem da grama!\n");
+        return -1;
+    }
+
+    recursos->bg_mapa_branco = al_load_bitmap("bg_mapa_branco.png");
+    if (!recursos->bg_mapa_branco) {
+        fprintf(stderr, "Falha ao carregar a imagem de fundo branco!\n");
+        return -1;
+    }
+
     recursos->escolher_mapas_background = al_load_bitmap("escolher_mapas.jpg");
     if (!recursos->escolher_mapas_background) {
         fprintf(stderr, "Falha ao carregar a imagem de escolher mapas!\n");
@@ -95,12 +109,10 @@ int inicializar_componentes_allegro(struct AllegroRecursos* recursos) {
         al_destroy_display(recursos->display);
         return -1;
     }
-
     return 0;
 }
 
-int main(int argc, char** argv) {
-
+int main(int argc, char** argv) { 
     struct AllegroRecursos recursos;
 
     if (inicializar_componentes_allegro(&recursos) != 0) {
@@ -110,9 +122,30 @@ int main(int argc, char** argv) {
     // AREA --> VARIAVEIS DE CONTROLE
     int largura_da_imagem = 0;
     int altura_da_imagem = 0;
-    int imagem_fundo = 0; // 0: Imagem Menu, 1: Imagem Config, 2: Imagem escolher_mapas
+    int imagem_fundo = 0; // 0: Imagem Menu, 1: Imagem Config, 2: Imagem escolher_mapas,  100: Fundo Branco (Caso Precise - Possível remoção)
     bool jogo_rodando = true;
     bool tocar_som_menu = false;
+
+
+    // AREA --> VARIAVEIS DA MATRIZ
+    int xOff = 0;
+    int yOff = 0;
+    int colunas_mapa = 10;
+    int tamanho_mapa = 100;
+    int tamanho_titulo = 128;
+
+    int map[10][10] = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+        {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+        {0, 1, 0, 1, 1, 1, 1, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    };
 
     // STRUCTS PARA ÁREAS CLICÁVEIS
     struct area {
@@ -122,34 +155,32 @@ int main(int argc, char** argv) {
         int altura;
     };
 
-    // Structs para áreas clicáveis
+    // Structs para areas clicáveis
     struct area area_config = { 515, 405, 250, 100 };
-    struct area area_mapa = { 541, 290, 200, 100 };
+    struct area area_jogar = { 541, 290, 200, 100 };
     struct area area_desligar_som = { 320, 600, 220, 70 };
     struct area area_ligar_som = { 740, 600, 220, 70 };
     struct area area_voltar = { 165, 40, 200, 90 };
+    struct area escolha_pampa = { 470, 430, 350, 350 };
 
     // Areas abaixo não foram vinculadas a nada ainda apenas criada
     struct area escolha_amazonia = { 30, 45, 350, 350 };
-    struct area escolha_cerrado = { 470, 45, 350, 350 };
-    struct area escolha_caatinga = { 900, 45, 350, 350 };
-    struct area escola_mataAtlantica = { 30, 430, 350, 350 };
-    struct area escolha_pampa = { 470, 430, 350, 350 };
     struct area escolha_pantanal = { 900, 430, 350, 350 };
+    struct area escolha_caatinga = { 900, 45, 350, 350 };
+ // struct area escolha_cerrado = { 470, 45, 350, 350 };
+ // struct area escola_mataAtlantica = { 30, 430, 350, 350 };
+
 
     al_set_sample_instance_playmode(recursos.inst_som_menu, ALLEGRO_PLAYMODE_LOOP);
     al_attach_sample_instance_to_mixer(recursos.inst_som_menu, al_get_default_mixer());
 
-    // Toca o som apenas no menu (quando o fundo for 0 == Imagem menu)
     if (imagem_fundo == 0 && tocar_som_menu) {
         al_play_sample_instance(recursos.inst_som_menu);
     }
 
-    // Registra os eventos de mouse e de fechar a janela no (X)
     al_register_event_source(recursos.event_queue, al_get_display_event_source(recursos.display));
     al_register_event_source(recursos.event_queue, al_get_mouse_event_source());
 
-    // Loop principal de eventos
     while (jogo_rodando) {
         ALLEGRO_EVENT event;
         al_wait_for_event(recursos.event_queue, &event);
@@ -171,8 +202,8 @@ int main(int argc, char** argv) {
             }
 
             // Verifica se clicou na área de jogar
-            if (event.mouse.x >= area_mapa.x && event.mouse.x <= area_mapa.x + area_mapa.largura &&
-                event.mouse.y >= area_mapa.y && event.mouse.y <= area_mapa.y + area_mapa.altura) {
+            if (event.mouse.x >= area_jogar.x && event.mouse.x <= area_jogar.x + area_jogar.largura &&
+                event.mouse.y >= area_jogar.y && event.mouse.y <= area_jogar.y + area_jogar.altura) {
                 printf("Evento --> Clique Registrado na área jogar\n");
                 imagem_fundo = 2;
                 if (tocar_som_menu) {
@@ -206,28 +237,51 @@ int main(int argc, char** argv) {
                 al_play_sample_instance(recursos.inst_som_menu);
                 tocar_som_menu = true;
             }
+
+            // Verifica Area de Clique --> Pampa
+            if (event.mouse.x >= escolha_pampa.x && event.mouse.x <= escolha_pampa.x + escolha_pampa.largura &&
+                event.mouse.y >= escolha_pampa.y && event.mouse.y <= escolha_pampa.y + escolha_pampa.altura) {
+                printf("Evento --> Clique Registrado na area Pampa\n");
+                imagem_fundo = 100;
+                tocar_som_menu = true;
+            }
         }
 
-        // Desenhar a imagem de fundo de acordo com a variável imagem_fundo
+        // Desenha Imagem de Fundo com base em sua numeração
         if (imagem_fundo == 0) {
             al_draw_bitmap(recursos.background, 0, 0, 0);
-        } else if (imagem_fundo == 1) {
+        }
+        else if (imagem_fundo == 1) {
             al_draw_bitmap(recursos.config_background, 0, 0, 0);
-        } else if (imagem_fundo == 2) {
+        }
+        else if (imagem_fundo == 2) {
             al_draw_bitmap(recursos.escolher_mapas_background, 0, 0, 0);
         }
+        else if (imagem_fundo == 100) {
+            al_draw_bitmap(recursos.bg_mapa_branco, 0, 0, 0);
 
+            // Desenha Grama Quando for 0 na matriz
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (map[i][j] == 0) {
+                        al_draw_bitmap(recursos.imagem_grama, j * tamanho_mapa, i * tamanho_mapa, 0);
+                    }
+                }
+            }
+        }
         al_flip_display();
     }
 
-    // Libera recursos
-    al_destroy_sample_instance(recursos.inst_som_menu);
-    al_destroy_sample(recursos.som_menu);
+    // LIMPA --> DESTROI TUDO DA MEMORIA
     al_destroy_bitmap(recursos.background);
     al_destroy_bitmap(recursos.config_background);
+    al_destroy_bitmap(recursos.imagem_grama);
+    al_destroy_bitmap(recursos.bg_mapa_branco);
     al_destroy_bitmap(recursos.escolher_mapas_background);
-    al_destroy_event_queue(recursos.event_queue);
+    al_destroy_sample(recursos.som_menu);
+    al_destroy_sample_instance(recursos.inst_som_menu);
     al_destroy_display(recursos.display);
+    al_destroy_event_queue(recursos.event_queue);
 
     return 0;
-}
+    }

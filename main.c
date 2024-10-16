@@ -112,7 +112,7 @@ int inicializar_componentes_allegro(struct AllegroRecursos* recursos) {
     return 0;
 }
 
-int main(int argc, char** argv) { 
+int main(int argc, char** argv) {
     struct AllegroRecursos recursos;
 
     if (inicializar_componentes_allegro(&recursos) != 0) {
@@ -128,47 +128,51 @@ int main(int argc, char** argv) {
 
 
     // AREA --> VARIAVEIS DA MATRIZ
-    int xOff = 0;
-    int yOff = 0;
-    int colunas_mapa = 10;
-    int tamanho_mapa = 100;
-    int tamanho_titulo = 128;
+    typedef struct {
+        int xOff;
+        int yOff;
+        int colunas_mapa;
+        int tamanho_mapa;
+        int tamanho_titulo;
+    } maps;
 
-    int map[10][10] = {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-        {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
-        {0, 1, 0, 1, 1, 1, 1, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    maps mapas = { 0, 0, 13, 100, 128 };
+
+    int map[13][13] = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+        {0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0},
+        {0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+        {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
 
     // STRUCTS PARA ÁREAS CLICÁVEIS
-    struct area {
+    typedef struct {
         int x;
         int y;
         int largura;
         int altura;
-    };
+    } area;
 
     // Structs para areas clicáveis
-    struct area area_config = { 515, 405, 250, 100 };
-    struct area area_jogar = { 541, 290, 200, 100 };
-    struct area area_desligar_som = { 320, 600, 220, 70 };
-    struct area area_ligar_som = { 740, 600, 220, 70 };
-    struct area area_voltar = { 165, 40, 200, 90 };
-    struct area escolha_pampa = { 470, 430, 350, 350 };
+    area area_config = { 515, 405, 250, 100 };
+    area area_jogar = { 541, 290, 200, 100 };
+    area area_desligar_som = { 320, 600, 220, 70 };
+    area area_ligar_som = { 740, 600, 220, 70 };
+    area area_voltar = { 165, 40, 200, 90 };
+    area escolha_pampa = { 470, 430, 350, 350 };
 
     // Areas abaixo não foram vinculadas a nada ainda apenas criada
-    struct area escolha_amazonia = { 30, 45, 350, 350 };
-    struct area escolha_pantanal = { 900, 430, 350, 350 };
-    struct area escolha_caatinga = { 900, 45, 350, 350 };
- // struct area escolha_cerrado = { 470, 45, 350, 350 };
- // struct area escola_mataAtlantica = { 30, 430, 350, 350 };
+    area escolha_amazonia = { 30, 45, 350, 350 };
+    area escolha_pantanal = { 900, 430, 350, 350 };
+    area escolha_caatinga = { 900, 45, 350, 350 };
+    // struct area escolha_cerrado = { 470, 45, 350, 350 };
+    // struct area escola_mataAtlantica = { 30, 430, 350, 350 };
 
 
     al_set_sample_instance_playmode(recursos.inst_som_menu, ALLEGRO_PLAYMODE_LOOP);
@@ -261,10 +265,10 @@ int main(int argc, char** argv) {
             al_draw_bitmap(recursos.bg_mapa_branco, 0, 0, 0);
 
             // Desenha Grama Quando for 0 na matriz
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
+            for (int i = 0; i < 13; i++) {
+                for (int j = 0; j < 13; j++) {
                     if (map[i][j] == 0) {
-                        al_draw_bitmap(recursos.imagem_grama, j * tamanho_mapa, i * tamanho_mapa, 0);
+                        al_draw_bitmap(recursos.imagem_grama, j * mapas.tamanho_mapa, i * mapas.tamanho_mapa, 0);
                     }
                 }
             }
@@ -284,4 +288,4 @@ int main(int argc, char** argv) {
     al_destroy_event_queue(recursos.event_queue);
 
     return 0;
-    }
+}

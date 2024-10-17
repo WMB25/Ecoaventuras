@@ -1,2 +1,0 @@
-C:\Users\pedro.hgbertanhi\source\repos\Ecoaventuras\EcoPi\x64\Debug\jogo-biomas-pi.exe
-C:\Users\pedro.hgbertanhi\source\repos\Ecoaventuras\x64\Debug\jogo-biomas-pi.exe

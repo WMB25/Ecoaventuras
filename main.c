@@ -20,7 +20,7 @@ typedef struct  {
     ALLEGRO_BITMAP* SPRITE;
     ALLEGRO_DISPLAY* display;
     ALLEGRO_EVENT_QUEUE* event_queue;
-}AllegroRecursos;
+} AllegroRecursos;
 
 int inicializar_componentes_allegro(AllegroRecursos* recursos) {
     if (!al_init()) {

@@ -8,7 +8,7 @@
 #include <allegro5/keyboard.h>
 
 // Struct para agrupar os ponteiros 
-struct AllegroRecursos {
+typedef struct  {
     ALLEGRO_SAMPLE* som_menu;
     ALLEGRO_SAMPLE_INSTANCE* inst_som_menu;
     ALLEGRO_BITMAP* background;
@@ -17,12 +17,12 @@ struct AllegroRecursos {
     ALLEGRO_BITMAP* bg_mapa_branco;
     ALLEGRO_BITMAP* imagem_grama;
     ALLEGRO_BITMAP* grama_amazonia;
+    ALLEGRO_BITMAP* SPRITE;
     ALLEGRO_DISPLAY* display;
     ALLEGRO_EVENT_QUEUE* event_queue;
-    ALLEGRO_BITMAP* SPRITE;
-};
+}AllegroRecursos;
 
-int inicializar_componentes_allegro(struct AllegroRecursos* recursos) {
+int inicializar_componentes_allegro(AllegroRecursos* recursos) {
     if (!al_init()) {
         fprintf(stderr, "Falha ao inicializar Allegro!\n");
         return -1;
@@ -50,6 +50,11 @@ int inicializar_componentes_allegro(struct AllegroRecursos* recursos) {
 
     if (!al_init_acodec_addon()) {
         fprintf(stderr, "Falha ao inicializar o codec de áudio!\n");
+        return -1;
+    }
+
+    if (!al_install_keyboard()) {
+        printf("Erro ao instalar o teclado!\n");
         return -1;
     }
 
@@ -100,6 +105,12 @@ int inicializar_componentes_allegro(struct AllegroRecursos* recursos) {
         return -1;
     }
 
+    recursos->SPRITE = al_load_bitmap("dragon.png");
+    if (!recursos->SPRITE) {
+        fprintf(stderr, "Falha ao carregar O PERSONAGEM!\n");
+        return -1;
+    }
+
     recursos->inst_som_menu = al_create_sample_instance(recursos->som_menu);
     if (!recursos->inst_som_menu) {
         fprintf(stderr, "Falha ao criar a instância do som!\n");
@@ -119,18 +130,13 @@ int inicializar_componentes_allegro(struct AllegroRecursos* recursos) {
         return -1;
     }
 
-    recursos->SPRITE = al_load_bitmap("dragon.png");
-    if (!recursos->SPRITE) {
-        fprintf(stderr, "Falha ao carregar O PERSONAGEM!\n");
-        return -1;
-    }
     return 0;
 }
 
-int draw_grama(int map[][12], ALLEGRO_BITMAP* imagem, int tamanho) {
-    
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
+void draw_grama(int map[][13], ALLEGRO_BITMAP* imagem, int tamanho) {
+
+    for (int i = 0; i < 13; i++) {
+        for (int j = 0; j < 13; j++) {
             if (map[i][j] == 0) {
                 al_draw_bitmap(imagem, j * tamanho, i * tamanho, 0);
             }
@@ -139,18 +145,15 @@ int draw_grama(int map[][12], ALLEGRO_BITMAP* imagem, int tamanho) {
     }
 }
 
-
-int main(int argc, char** argv) { 
-    struct AllegroRecursos recursos;
+int main(int argc, char** argv) {
+     AllegroRecursos recursos;
 
     if (inicializar_componentes_allegro(&recursos) != 0) {
         return -1;
     }
 
-    //fiquei com preguiça de pensar em como passar para a funçao (recurso, NAme, ...) teclado!
-    al_install_keyboard();
     al_register_event_source(recursos.event_queue, al_get_keyboard_event_source());
-    
+
     // AREA --> VARIAVEIS DE CONTROLE
     int largura_da_imagem = 0;
     int altura_da_imagem = 0;
@@ -158,90 +161,94 @@ int main(int argc, char** argv) {
     bool jogo_rodando = true;
     bool tocar_som_menu = false;
 
+    //movimentação sprite!
+    float frame = 0.f;
+    int pos_x = 0, pos_y = 0;
+    int current_frame_y = 161;
+
     // STRUCTS PARA ÁREAS CLICÁVEIS
-    struct area {
+    typedef struct {
         int x;
         int y;
         int largura;
         int altura;
-    };
+    } area;
+
+    //STRUCTS DE MAPAS
+    typedef struct {
+        int colunas_mapa;
+        int tamanho_mapa;
+        int tamanho_titulo;
+    } mapa;
+    mapa areaMapa = { 13, 100, 128 };
 
     // Structs para areas clicáveis
-    struct area area_config = { 515, 405, 250, 100 };
-    struct area area_jogar = { 541, 290, 200, 100 };
-    struct area area_desligar_som = { 320, 600, 220, 70 };
-    struct area area_ligar_som = { 740, 600, 220, 70 };
-    struct area area_voltar = { 165, 40, 200, 90 };
-                                                         //endereço de tela 
-    struct area escolha_amazonia = { 30, 45, 350, 350 }; int Amazonia = 100;
-    int map_Amazonia[10][10] = {
-       {0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
-       {0, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-       {0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
-       {0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-       {0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    };
-   
-    struct area escolha_pampa = { 470, 430, 350, 350 }; int Pampa = 110;
-    //AREA da matriz
-    int xOff = 0;
-    int yOff = 0;
-    int colunas_mapa = 10;
-    int tamanho_mapa = 100;
-    int tamanho_titulo = 128;
-    int map[10][10] = {
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
-       {0, 1, 0, 1, 1, 1, 1, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+     area area_config = { 515, 405, 250, 100 };
+     area area_jogar = { 541, 290, 200, 100 };
+     area area_desligar_som = { 320, 600, 220, 70 };
+     area area_ligar_som = { 740, 600, 220, 70 };
+     area area_voltar = { 165, 40, 200, 90 };
+
+    //endereço de tela 
+     area escolha_amazonia = { 30, 45, 350, 350 }; int Amazonia = 100;
+    int map_Amazonia[10][13] = {
+       {0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0 , 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
     };
 
-    struct area escolha_pantanal = { 900, 430, 350, 350 }; int Pantanal = 120;
-    int map_Pantanal[12][10] = {
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
-       {0, 1, 0, 1, 1, 1, 1, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+     area escolha_pampa = { 470, 430, 350, 350 }; int Pampa = 110;
+
+    int map[10][13] = {
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
     };
 
-    struct area escolha_caatinga = { 900, 45, 350, 350 }; int Catinga = 130;
-    int map_Catinga[12][10] = {
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
-       {0, 1, 0, 1, 1, 1, 1, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+     area escolha_pantanal = { 900, 430, 350, 350 }; int Pantanal = 120;
+    int map_Pantanal[10][13] = {
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
     };
 
- // struct area escolha_cerrado = { 470, 45, 350, 350 };
- // struct area escola_mataAtlantica = { 30, 430, 350, 350 };
+     area escolha_caatinga = { 900, 45, 350, 350 }; int Catinga = 130;
+    int map_Catinga[10][13] = {
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+    };
 
-    //movimentaçao sprite!
-    float frame = 0.f;
-    int pos_x = 0, pos_y = 0;
-    int current_frame_y = 161;
+    // struct area escolha_cerrado = { 470, 45, 350, 350 };
+    // struct area escola_mataAtlantica = { 30, 430, 350, 350 };
 
     al_set_sample_instance_playmode(recursos.inst_som_menu, ALLEGRO_PLAYMODE_LOOP);
     al_attach_sample_instance_to_mixer(recursos.inst_som_menu, al_get_default_mixer());
@@ -357,8 +364,9 @@ int main(int argc, char** argv) {
         }
         else if (imagem_fundo == Amazonia) {
             al_draw_bitmap(recursos.bg_mapa_branco, 0, 0, 0);
-            draw_grama(map_Amazonia, recursos.imagem_grama, tamanho_mapa);
+            draw_grama(map_Amazonia, recursos.imagem_grama, areaMapa.tamanho_mapa);
 
+            //Movimentação
             if (event.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
                 current_frame_y = 161;
                 pos_x += 20;
@@ -384,22 +392,45 @@ int main(int argc, char** argv) {
         }
         else if (imagem_fundo == Catinga) {
             al_draw_bitmap(recursos.bg_mapa_branco, 0, 0, 0);
-            draw_grama(map_Catinga, recursos.imagem_grama, tamanho_mapa);
+            draw_grama(map_Catinga, recursos.imagem_grama, areaMapa.tamanho_mapa);
+
+            //Movimentação
+            if (event.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
+                current_frame_y = 161;
+                pos_x += 20;
+            }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_LEFT) {
+                current_frame_y = 161 * 3;
+                pos_x -= 20;
+            }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_DOWN) {
+                current_frame_y = 161 * 2;
+                pos_y = 20;
+            }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_UP) {
+                current_frame_y = 0;
+                pos_y -= 20;
+            }
+            frame += 0.3f;
+            if (frame > 3) {
+                frame -= 3;
+            }
+            al_draw_bitmap_region(recursos.SPRITE, 191 * (int)frame, current_frame_y, 191, 161, pos_x, pos_y, 0);
         }
         else if (imagem_fundo == Pampa) {
             al_draw_bitmap(recursos.bg_mapa_branco, 0, 0, 0);
             // Desenha Grama Quando for 0 na matriz
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
+            for (int i = 0; i < 13; i++) {
+                for (int j = 0; j < 13; j++) {
                     if (map[i][j] == 0) {
-                        al_draw_bitmap(recursos.imagem_grama, j * tamanho_mapa, i * tamanho_mapa, 0);
+                        al_draw_bitmap(recursos.imagem_grama, j * areaMapa.tamanho_mapa, i * areaMapa.tamanho_mapa, 0);
                     }
                 }
             }
         }
-        else if (imagem_fundo == Pantanal) { 
+        else if (imagem_fundo == Pantanal) {
             al_draw_bitmap(recursos.bg_mapa_branco, 0, 0, 0);
-            draw_grama(map_Pantanal, recursos.imagem_grama, tamanho_mapa);
+            draw_grama(map_Pantanal, recursos.imagem_grama, areaMapa.tamanho_mapa);
         }
         al_flip_display();
     }
@@ -408,6 +439,7 @@ int main(int argc, char** argv) {
     al_destroy_bitmap(recursos.background);
     al_destroy_bitmap(recursos.config_background);
     al_destroy_bitmap(recursos.imagem_grama);
+    al_destroy_bitmap(recursos.SPRITE);
     al_destroy_bitmap(recursos.bg_mapa_branco);
     al_destroy_bitmap(recursos.escolher_mapas_background);
     al_destroy_sample(recursos.som_menu);
@@ -416,4 +448,4 @@ int main(int argc, char** argv) {
     al_destroy_event_queue(recursos.event_queue);
 
     return 0;
-    }
+}

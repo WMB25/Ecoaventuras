@@ -133,10 +133,20 @@ int inicializar_componentes_allegro(AllegroRecursos* recursos) {
     return 0;
 }
 
+<<<<<<< HEAD
 void draw_grama(int map[][13], ALLEGRO_BITMAP* imagem, int tamanho) {
 
     for (int i = 0; i < 13; i++) {
         for (int j = 0; j < 13; j++) {
+=======
+<<<<<<< HEAD
+int main(int argc, char** argv) {
+=======
+int draw_grama(int map[][12], ALLEGRO_BITMAP* imagem, int tamanho) {
+    
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+>>>>>>> 754f4401ac4ece84342e1ede136afa0f4a722de6
             if (map[i][j] == 0) {
                 al_draw_bitmap(imagem, j * tamanho, i * tamanho, 0);
             }
@@ -145,8 +155,15 @@ void draw_grama(int map[][13], ALLEGRO_BITMAP* imagem, int tamanho) {
     }
 }
 
+<<<<<<< HEAD
 int main(int argc, char** argv) {
      AllegroRecursos recursos;
+=======
+
+int main(int argc, char** argv) { 
+>>>>>>> ea3c58b004d3a584f82cab07d4142c037ea277b2
+    struct AllegroRecursos recursos;
+>>>>>>> 754f4401ac4ece84342e1ede136afa0f4a722de6
 
     if (inicializar_componentes_allegro(&recursos) != 0) {
         return -1;
@@ -161,11 +178,42 @@ int main(int argc, char** argv) {
     bool jogo_rodando = true;
     bool tocar_som_menu = false;
 
+<<<<<<< HEAD
     //movimentação sprite!
     float frame = 0.f;
     int pos_x = 0, pos_y = 0;
     int current_frame_y = 161;
 
+=======
+<<<<<<< HEAD
+
+    // AREA --> VARIAVEIS DA MATRIZ
+    typedef struct {
+        int xOff;
+        int yOff;
+        int colunas_mapa;
+        int tamanho_mapa;
+        int tamanho_titulo;
+    } maps;
+
+    maps mapas = { 0, 0, 13, 100, 128 };
+
+    int map[13][13] = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+        {0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0},
+        {0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+        {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    };
+
+=======
+>>>>>>> ea3c58b004d3a584f82cab07d4142c037ea277b2
+>>>>>>> 754f4401ac4ece84342e1ede136afa0f4a722de6
     // STRUCTS PARA ÁREAS CLICÁVEIS
     typedef struct {
         int x;
@@ -173,6 +221,7 @@ int main(int argc, char** argv) {
         int largura;
         int altura;
     } area;
+<<<<<<< HEAD
 
     //STRUCTS DE MAPAS
     typedef struct {
@@ -202,6 +251,63 @@ int main(int argc, char** argv) {
        {0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0 , 0, 0},
        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 , 0, 0},
        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
+=======
+
+    // Structs para areas clicáveis
+<<<<<<< HEAD
+    area area_config = { 515, 405, 250, 100 };
+    area area_jogar = { 541, 290, 200, 100 };
+    area area_desligar_som = { 320, 600, 220, 70 };
+    area area_ligar_som = { 740, 600, 220, 70 };
+    area area_voltar = { 165, 40, 200, 90 };
+    area escolha_pampa = { 470, 430, 350, 350 };
+
+    // Areas abaixo não foram vinculadas a nada ainda apenas criada
+    area escolha_amazonia = { 30, 45, 350, 350 };
+    area escolha_pantanal = { 900, 430, 350, 350 };
+    area escolha_caatinga = { 900, 45, 350, 350 };
+    // struct area escolha_cerrado = { 470, 45, 350, 350 };
+    // struct area escola_mataAtlantica = { 30, 430, 350, 350 };
+=======
+    struct area area_config = { 515, 405, 250, 100 };
+    struct area area_jogar = { 541, 290, 200, 100 };
+    struct area area_desligar_som = { 320, 600, 220, 70 };
+    struct area area_ligar_som = { 740, 600, 220, 70 };
+    struct area area_voltar = { 165, 40, 200, 90 };
+                                                         //endereço de tela 
+    struct area escolha_amazonia = { 30, 45, 350, 350 }; int Amazonia = 100;
+    int map_Amazonia[10][10] = {
+       {0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+       {0, 1, 0, 1, 1, 1, 1, 1, 1, 1},
+       {0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
+       {0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
+       {0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    };
+   
+    struct area escolha_pampa = { 470, 430, 350, 350 }; int Pampa = 110;
+    //AREA da matriz
+    int xOff = 0;
+    int yOff = 0;
+    int colunas_mapa = 10;
+    int tamanho_mapa = 100;
+    int tamanho_titulo = 128;
+    int map[10][10] = {
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+       {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+       {0, 1, 0, 1, 1, 1, 1, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+       {0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+>>>>>>> 754f4401ac4ece84342e1ede136afa0f4a722de6
     };
 
      area escolha_pampa = { 470, 430, 350, 350 }; int Pampa = 110;
@@ -233,6 +339,7 @@ int main(int argc, char** argv) {
        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
     };
 
+<<<<<<< HEAD
      area escolha_caatinga = { 900, 45, 350, 350 }; int Catinga = 130;
     int map_Catinga[10][13] = {
        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
@@ -246,6 +353,11 @@ int main(int argc, char** argv) {
        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0},
     };
+=======
+ // struct area escolha_cerrado = { 470, 45, 350, 350 };
+ // struct area escola_mataAtlantica = { 30, 430, 350, 350 };
+>>>>>>> ea3c58b004d3a584f82cab07d4142c037ea277b2
+>>>>>>> 754f4401ac4ece84342e1ede136afa0f4a722de6
 
     // struct area escolha_cerrado = { 470, 45, 350, 350 };
     // struct area escola_mataAtlantica = { 30, 430, 350, 350 };
@@ -423,7 +535,11 @@ int main(int argc, char** argv) {
             for (int i = 0; i < 13; i++) {
                 for (int j = 0; j < 13; j++) {
                     if (map[i][j] == 0) {
+<<<<<<< HEAD
                         al_draw_bitmap(recursos.imagem_grama, j * areaMapa.tamanho_mapa, i * areaMapa.tamanho_mapa, 0);
+=======
+                        al_draw_bitmap(recursos.imagem_grama, j * mapas.tamanho_mapa, i * mapas.tamanho_mapa, 0);
+>>>>>>> 754f4401ac4ece84342e1ede136afa0f4a722de6
                     }
                 }
             }

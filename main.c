@@ -154,7 +154,6 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    al_register_event_source(recursos.event_queue, al_get_keyboard_event_source());
 
     // AREA --> VARIAVEIS DE CONTROLE
     int largura_da_imagem = 0;
@@ -267,6 +266,7 @@ int main(int argc, char** argv) {
 
     al_register_event_source(recursos.event_queue, al_get_display_event_source(recursos.display));
     al_register_event_source(recursos.event_queue, al_get_mouse_event_source());
+    al_register_event_source(recursos.event_queue, al_get_keyboard_event_source());
 
     while (jogo_rodando) {
         ALLEGRO_EVENT event;
@@ -427,18 +427,57 @@ int main(int argc, char** argv) {
         }
         else if (imagem_fundo == Pampa) {
             al_draw_bitmap(recursos.bg_mapa_branco, 0, 0, 0);
-            // Desenha Grama Quando for 0 na matriz
-            for (int i = 0; i < 13; i++) {
-                for (int j = 0; j < 13; j++) {
-                    if (map[i][j] == 0) {
-                        al_draw_bitmap(recursos.imagem_grama, j * areaMapa.tamanho_mapa, i * areaMapa.tamanho_mapa, 0);
-                    }
-                }
+            draw_grama(map_Catinga, recursos.imagem_grama, areaMapa.tamanho_mapa);
+
+            //Movimentação
+            if (event.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
+                mov_prs.current_frame_y = 161;
+                mov_prs.pos_x += 20;
             }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_LEFT) {
+                mov_prs.current_frame_y = 161 * 3;
+                mov_prs.pos_x -= 20;
+            }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_DOWN) {
+                mov_prs.current_frame_y = 161 * 2;
+                mov_prs.pos_y = 20;
+            }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_UP) {
+                mov_prs.current_frame_y = 0;
+                mov_prs.pos_y -= 20;
+            }
+            mov_prs.frame += 0.3f;
+            if (mov_prs.frame > 3) {
+                mov_prs.frame -= 3;
+            }
+            al_draw_bitmap_region(recursos.SPRITE, 191 * (int)mov_prs.frame, mov_prs.current_frame_y, 191, 161, mov_prs.pos_x, mov_prs.pos_y, 0);
         }
         else if (imagem_fundo == Pantanal) {
             al_draw_bitmap(recursos.bg_mapa_branco, 0, 0, 0);
             draw_grama(map_Pantanal, recursos.imagem_grama, areaMapa.tamanho_mapa);
+
+            //Movimentação
+            if (event.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
+                mov_prs.current_frame_y = 161;
+                mov_prs.pos_x += 20;
+            }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_LEFT) {
+                mov_prs.current_frame_y = 161 * 3;
+                mov_prs.pos_x -= 20;
+            }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_DOWN) {
+                mov_prs.current_frame_y = 161 * 2;
+                mov_prs.pos_y = 20;
+            }
+            else if (event.keyboard.keycode == ALLEGRO_KEY_UP) {
+                mov_prs.current_frame_y = 0;
+                mov_prs.pos_y -= 20;
+            }
+            mov_prs.frame += 0.3f;
+            if (mov_prs.frame > 3) {
+                mov_prs.frame -= 3;
+            }
+            al_draw_bitmap_region(recursos.SPRITE, 191 * (int)mov_prs.frame, mov_prs.current_frame_y, 191, 161, mov_prs.pos_x, mov_prs.pos_y, 0);
         }
         al_flip_display();
     }

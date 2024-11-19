@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento_jacare.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:movimento_jacare.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento_boi.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:movimento_boi.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\Ecoaventuras\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -17,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:movimento.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento_boi.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:movimento_boi.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento_jacare.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:movimento_jacare.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "main.c",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\main.c",
               "RelativeDocumentMoniker": "main.c",
@@ -47,8 +47,7 @@
               "ViewState": "AgIAAMIAAAAAAAAAAAAAANkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-09-18T03:03:05.767Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -56,19 +55,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "movimento_jacare.c",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento_jacare.c",
               "RelativeDocumentMoniker": "movimento_jacare.c",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento_jacare.c",
               "RelativeToolTip": "movimento_jacare.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAjwDwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-11-19T02:31:55.358Z"
+              "WhenOpened": "2024-11-19T02:31:55.358Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "liberar_recursos.c",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\liberar_recursos.c",
               "RelativeDocumentMoniker": "liberar_recursos.c",
@@ -80,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "recusos_allegro.c",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\recusos_allegro.c",
               "RelativeDocumentMoniker": "recusos_allegro.c",
@@ -92,19 +92,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "movimento_boi.c",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento_boi.c",
               "RelativeDocumentMoniker": "movimento_boi.c",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento_boi.c",
               "RelativeToolTip": "movimento_boi.c",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAjwDIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-11-16T01:48:21.661Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "movimento.c",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Ecoaventuras\\movimento.c",
               "RelativeDocumentMoniker": "movimento.c",

@@ -1,5 +1,13 @@
-﻿  main.c
-C:\Users\Administrator\Downloads\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\main.c(79,9): warning C4098: 'impressao_pergunta': função 'void' retornando um valor
-C:\Users\Administrator\Downloads\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\main.c(155,9): warning C4013: 'inicializar_componentes_allegro' indefinido; assumindo extern retornando int
-C:\Users\Administrator\Downloads\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\main.c(666,5): warning C4013: 'limpar_recursos' indefinido; assumindo extern retornando int
-  jogo-biomas-pi.vcxproj -> C:\Users\Administrator\Downloads\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\x64\Debug\jogo-biomas-pi.exe
+﻿  liberar_recursos.c
+  main.c
+  movimento.c
+C:\Users\Administrator\Documents\Ecoaventuras\main.c(79,9): warning C4098: 'impressao_pergunta': função 'void' retornando um valor
+C:\Users\Administrator\Documents\Ecoaventuras\main.c(155,9): warning C4013: 'inicializar_componentes_allegro' indefinido; assumindo extern retornando int
+C:\Users\Administrator\Documents\Ecoaventuras\main.c(666,5): warning C4013: 'limpar_recursos' indefinido; assumindo extern retornando int
+  movimento_boi.c
+C:\Users\Administrator\Documents\Ecoaventuras\movimento_boi.c(51,5): warning C4013: 'inicializar_componentes_allegro' indefinido; assumindo extern retornando int
+  movimento_jacare.c
+C:\Users\Administrator\Documents\Ecoaventuras\movimento_jacare.c(50,5): warning C4013: 'inicializar_componentes_allegro' indefinido; assumindo extern retornando int
+  recusos_allegro.c
+  Gerando Código...
+  jogo-biomas-pi.vcxproj -> C:\Users\Administrator\Documents\Ecoaventuras\x64\Debug\jogo-biomas-pi.exe

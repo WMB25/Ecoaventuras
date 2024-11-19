@@ -1,0 +1,90 @@
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.00000] opening C:\Users\Administrator\Downloads\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\x64\Debug\allegro5.cfg r
+system   D            wsystem.c:836  maybe_parent_dir                 [   0.00000] Also searching C:\Users\Administrator\Downloads\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\x64\
+system   D            wsystem.c:891  _al_win_safe_load_library        [   0.00000] PathFindOnPath found: C:\Windows\system32\shcore.dll
+system   D            wsystem.c:797  load_library_at_path             [   0.00000] Calling LoadLibrary C:\Windows\system32\shcore.dll
+system   I            wsystem.c:800  load_library_at_path             [   0.00000] Loaded C:\Windows\system32\shcore.dll
+system   I             system.c:271  al_install_system                [   0.00000] Allegro version: 5.2.9
+audio-dsound I           dsound.cpp:275  _dsound_open                     [   0.00049] Starting DirectSound...
+audio-dsound D           dsound.cpp:288  _dsound_open                     [   0.03731] DirectSoundCreate8 succeeded
+audio-dsound I           dsound.cpp:77   get_window                       [   0.03739] Using desktop window: 0000000000010010
+audio    I              audio.c:391  do_install_audio                 [   0.03752] Using DirectSound driver
+audio-dsound D           dsound.cpp:322  _dsound_allocate_voice           [   0.03762] Allocating voice
+audio-dsound D           dsound.cpp:381  _dsound_allocate_voice           [   0.03766] Allocated voice
+dtor     D               dtor.c:196  _al_register_destructor          [   0.03772] added dtor for voice 0000025DE6F11390, func 00007FFD5CA8116D
+dtor     D               dtor.c:196  _al_register_destructor          [   0.03779] added dtor for mixer 0000025DE6F11590, func 00007FFD5CA81488
+audio-dsound D           dsound.cpp:477  _dsound_start_voice              [   0.03790] Starting voice
+audio-dsound D           dsound.cpp:505  _dsound_start_voice              [   0.03796] CreateSoundBuffer
+audio-dsound D           dsound.cpp:513  _dsound_start_voice              [   0.03932] CreateSoundBuffer succeeded
+audio-dsound D           dsound.cpp:519  _dsound_start_voice              [   0.03938] Starting _dsound_update thread
+audio-dsound I           dsound.cpp:529  _dsound_start_voice              [   0.03964] Voice started
+dtor     D               dtor.c:196  _al_register_destructor          [   0.03971] added dtor for sample_instance 0000025DE6F17BF0, func 00007FFD5CA8122B
+audio    D          kcm_mixer.c:121  _al_rechannel_matrix             [   0.03980] sample matrix:
+audio    D          kcm_mixer.c:127  _al_rechannel_matrix             [   0.03987] 
+audio    D          kcm_mixer.c:127  _al_rechannel_matrix             [   0.03994] 
+font     W               font.c:370  al_init_font_addon               [   0.03999] Font addon already initialised.
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.04010] opening menu.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.04034] opening menu.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.04097] added dtor for bitmap 0000025DE6F27530, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.04773] opening img_fim.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.04810] opening img_fim.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.04881] added dtor for bitmap 0000025DE6F3F530, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.06714] opening img_amazonia.jpg rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.06746] opening img_amazonia.jpg rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.07373] added dtor for bitmap 0000025DE6F3A370, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.07774] opening img_sobre_amazonia.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.07809] opening img_sobre_amazonia.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.07882] added dtor for bitmap 0000025DE6F7BD70, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.09760] opening img_sobre_pampa.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.09793] opening img_sobre_pampa.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.09861] added dtor for bitmap 0000025DE6F3F970, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.11474] opening img_sobre_pantanal.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.11511] opening img_sobre_pantanal.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.11567] added dtor for bitmap 0000025DE6F3FB60, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.13326] opening img_sobre_caatinga.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.13351] opening img_sobre_caatinga.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.13406] added dtor for bitmap 0000025DE6F3FD50, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.14979] opening img_jacare.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.15009] opening img_jacare.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.15031] added dtor for bitmap 0000025DE6F271B0, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.15083] opening img_boi.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.15105] opening img_boi.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.15122] added dtor for bitmap 0000025DE6F7BAC0, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.15165] opening sobreBiomas.jpg rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.15183] opening sobreBiomas.jpg rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.15236] added dtor for bitmap 0000025DE6F26D30, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.15730] opening config.jpg rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.15773] opening config.jpg rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.15839] added dtor for bitmap 0000025DE6F26F20, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.16450] opening img_pampa.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.16476] opening img_pampa.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.16531] added dtor for bitmap 0000025DE6F7B310, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.18672] opening img_caatinga.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.18702] opening img_caatinga.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.18758] added dtor for bitmap 0000025DE6F3FF40, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.21160] opening grama.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.21188] opening grama.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.21205] added dtor for bitmap 0000025DE6F40630, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.21227] opening bg_mapa_branco.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.21248] opening bg_mapa_branco.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.21305] added dtor for bitmap 0000025DE6F40330, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.23251] opening froggy.png rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.23284] opening froggy.png rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.23304] added dtor for bitmap 0000025DE6F26AB0, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.23372] opening Poppins-Medium.ttf rb
+font     D                ttf.c:971  al_load_ttf_font_stretch_f       [   0.23398] Font Poppins-Medium.ttf loaded with pixel size 0 x 24.
+font     D                ttf.c:973  al_load_ttf_font_stretch_f       [   0.23404]     ascent=26.0, descent=-9.0, height=36.0
+dtor     D               dtor.c:196  _al_register_destructor          [   0.23412] added dtor for ttf_font 0000025DE6F28650, func 00007FFD5CBE128F
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.23418] opening escolher_mapas.jpg rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.23441] opening escolher_mapas.jpg rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.23505] added dtor for bitmap 0000025DE6F39340, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.24215] opening img_pantanal.jpg rb
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.24244] opening img_pantanal.jpg rb
+dtor     D               dtor.c:196  _al_register_destructor          [   0.25287] added dtor for bitmap 0000025DE9584AA0, func 00007FFD1B53118B
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.25910] opening menu.ogg rb
+acodec   I                ogg.c:197  _al_load_ogg_vorbis              [   0.25942] Loading sample menu.ogg.
+stdio    D         file_stdio.c:107  file_stdio_fopen                 [   0.25951] opening menu.ogg rb
+acodec   D                ogg.c:256  _al_load_ogg_vorbis_f            [   0.26012] channels 2
+acodec   D                ogg.c:257  _al_load_ogg_vorbis_f            [   0.26018] word_size 2
+acodec   D                ogg.c:258  _al_load_ogg_vorbis_f            [   0.26022] rate 44100
+acodec   D                ogg.c:259  _al_load_ogg_vorbis_f            [   0.26026] total_samples 158943791
+acodec   D                ogg.c:260  _al_load_ogg_vorbis_f            [   0.26029] total_size 635775164

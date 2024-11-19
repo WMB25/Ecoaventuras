@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\recusos_allegro.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:recusos_allegro.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\liberar_recursos.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:liberar_recursos.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:movimento.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento_boi.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:movimento_boi.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento_jacare.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4EB1E5FB-0E94-40AA-9FF0-8DEEF66378A6}|jogo-biomas-pi.vcxproj|solutionrelative:movimento_jacare.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\main.c",
+              "RelativeDocumentMoniker": "main.c",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\main.c*",
+              "RelativeToolTip": "main.c*",
+              "ViewState": "AgIAAMIAAAAAAAAAAAAAANcAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-18T03:03:05.767Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "movimento_jacare.c",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento_jacare.c",
+              "RelativeDocumentMoniker": "movimento_jacare.c",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento_jacare.c",
+              "RelativeToolTip": "movimento_jacare.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-19T02:31:55.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "liberar_recursos.c",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\liberar_recursos.c",
+              "RelativeDocumentMoniker": "liberar_recursos.c",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\liberar_recursos.c",
+              "RelativeToolTip": "liberar_recursos.c",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADwAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T03:26:37.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "recusos_allegro.c",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\recusos_allegro.c",
+              "RelativeDocumentMoniker": "recusos_allegro.c",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\recusos_allegro.c",
+              "RelativeToolTip": "recusos_allegro.c",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAAANMAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-10-29T03:50:02.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "movimento_boi.c",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento_boi.c",
+              "RelativeDocumentMoniker": "movimento_boi.c",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento_boi.c",
+              "RelativeToolTip": "movimento_boi.c",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-16T01:48:21.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "movimento.c",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento.c",
+              "RelativeDocumentMoniker": "movimento.c",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\Ecoaventuras-f7726d5cc46418b9917619d698d39133ad3a5b56\\movimento.c",
+              "RelativeToolTip": "movimento.c",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-10-29T03:57:01.167Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

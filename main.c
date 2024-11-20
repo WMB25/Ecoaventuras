@@ -35,9 +35,17 @@ typedef struct {
     ALLEGRO_BITMAP* img_sobre_amazonia;
     ALLEGRO_BITMAP* img_jacare;
     ALLEGRO_BITMAP* img_fim;
+    ALLEGRO_BITMAP* pergunta1;
+    ALLEGRO_BITMAP* pergunta2;
+    ALLEGRO_BITMAP* pergunta3;
+    ALLEGRO_BITMAP* pergunta4;
+    ALLEGRO_BITMAP* pergunta5;
+    ALLEGRO_BITMAP* pergunta6;
+    ALLEGRO_BITMAP* pergunta7;
+    ALLEGRO_BITMAP* pergunta8;
+    ALLEGRO_BITMAP* pergunta9;
+    ALLEGRO_BITMAP* pergunta10;
 } AllegroRecursos;
-
-
 
 // ISSO SERVE PRA DEFINIR CONSTANTES/VALORES -> DEIXA MAAIS FACIL DE MEXER NO CODIGO
 #define quantidade_bois 4
@@ -73,10 +81,6 @@ typedef struct {
 }pergunta;
 
 void impressao_pergunta(pergunta* questoes, ALLEGRO_FONT* font) {
-    if (!font) {
-        printf("Erro ao carregar Fonte na impressão!\n");
-        return -1;
-    }
 
     int largura_questoes = al_get_text_width(font, questoes->Questoes);
     int pos_x = (1280 - largura_questoes) / 2;
@@ -149,11 +153,9 @@ bool verificar_clique_na_area(ALLEGRO_EVENT event, area_limite* area) {
 
 
 int main(int argc, char** argv) {
-    AllegroRecursos recursos;{};
+    AllegroRecursos recursos;
+    inicializar_componentes_allegro(&recursos);
 
-    if (inicializar_componentes_allegro(&recursos) != 0) {
-        return -1;
-    }
 
     // AREA --> VARIAVEIS DE CONTROLE
     int tela = 0;

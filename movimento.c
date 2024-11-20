@@ -7,36 +7,36 @@
 
 #define LARGURA_TELA 1280
 #define ALTURA_TELA 800
-#define LARGURA_PERSONAGEM 191
-#define ALTURA_PERSONAGEM 161
+#define LARGURA_PERSONAGEM 41.33
+#define ALTURA_PERSONAGEM 36
 
 typedef struct {
     float frame;
     int pos_x, pos_y, current_frame_y;
 } mov_p;
 
-mov_p mov_prs = { 0.f, 300, 10, 161 };
+mov_p mov_prs = { 0.f, 300, 10, 36 };
 
 void movimento_personagem(ALLEGRO_EVENT event) {
 
     if (event.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
-        mov_prs.current_frame_y = 128;
+        mov_prs.current_frame_y = 36;
         mov_prs.pos_x += 20;
     }
 
     else if (event.keyboard.keycode == ALLEGRO_KEY_LEFT) {
-        mov_prs.current_frame_y = 128 * 3;
+        mov_prs.current_frame_y = 36 * 3;
         mov_prs.pos_x -= 20;
     }
 
-    else if (event.keyboard.keycode == ALLEGRO_KEY_DOWN) {
-        mov_prs.current_frame_y = 128 * 2;
-        mov_prs.pos_y += 20;
+    else if (event.keyboard.keycode == ALLEGRO_KEY_UP) {
+        mov_prs.current_frame_y = 36 * 2;
+        mov_prs.pos_y -= 20;
     }
 
-    else if (event.keyboard.keycode == ALLEGRO_KEY_UP) {
+    else if (event.keyboard.keycode == ALLEGRO_KEY_DOWN) {
         mov_prs.current_frame_y = 0;
-        mov_prs.pos_y -= 20;
+        mov_prs.pos_y += 20;
     }
 
     if (mov_prs.pos_x < 0) {

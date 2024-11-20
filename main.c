@@ -8,6 +8,8 @@
 #include <allegro5/keyboard.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include <time.h>
+#include <math.h>
 
 // Struct para agrupar os ponteiros 
 typedef struct {
@@ -45,6 +47,7 @@ typedef struct {
     ALLEGRO_BITMAP* pergunta8;
     ALLEGRO_BITMAP* pergunta9;
     ALLEGRO_BITMAP* pergunta10;
+   /* ALLEGRO_TIMER* timer;*/
 } AllegroRecursos;
 
 // ISSO SERVE PRA DEFINIR CONSTANTES/VALORES -> DEIXA MAAIS FACIL DE MEXER NO CODIGO
@@ -123,7 +126,7 @@ typedef struct {
     float gravidade;
     bool pulo;
 }frog;
-frog sapo = { 64, 64, 4, 0.f, 64, 20, 400, -5.0f, 0.0f, 0.5f, false };
+frog sapo = { 64, 64, 4, 0.f, 64, 20, 400, -5.0f, -0.0f, 0.5f, false };
 
 // ----------------------------------- AREA BLOQUEADA NOS MAPAS ----------------------------------- \\
 
@@ -183,17 +186,17 @@ int main(int argc, char** argv) {
 
     pergunta QuestoesA[5] = {
           {85, 260, "Qual a proporção do território brasileiro ocupada pela Amazônia ?", 1, {"1) 25%", "2) 49%", "3) 60%", "4) 75%"}, false},
-          {470, 110, "Qual animal é conhecido como o maior felino da Amazônia ?", 2, {"1) Tamanduá-bandeira", "2) Onça-pintada", "3) Macaco-aranha", "4) Arara-azul"}, false},
-          {510, 650, "Qual desses é um recurso natural da Amazônia ?", 3, {"1) Petróleo", "2) Madeira", "3) Gás natural", "4) Ferro"}, false},
-          {820, 360, "Qual é uma das principais ameaças ao bioma amazônico ?", 1, {"1) Plantação de soja", "2) Turismo sustentável", "3) Desmatamento", "4) Energia solar."}, false},
-          {1110, 330, "Qual é o papel da Amazônia no clima global ?", 1, {"1) Produção de petróleo", "2) Controle de ventos", "3) Produção de oxigênio e regulação da água", "4) Estímulo à desertificação"}, false}
+          {470, 110, "Qual animal é conhecido como o maior felino da Amazônia ?", 1, {"1) Tamanduá-bandeira", "2) Onça-pintada", "3) Macaco-aranha", "4) Arara-azul"}, false},
+          {510, 650, "Qual desses é um recurso natural da Amazônia ?", 2, {"1) Petróleo", "2) Madeira", "3) Gás natural", "4) Ferro"}, false},
+          {820, 360, "Qual é uma das principais ameaças ao bioma amazônico ?", 2, {"1) Plantação de soja", "2) Turismo sustentável", "3) Desmatamento", "4) Energia solar."}, false},
+          {1110, 330, "Qual é o papel da Amazônia no clima global ?", 2, {"1) Produção de petróleo", "2) Controle de ventos", "3) Produção de oxigênio e regulação da água", "4) Estímulo à desertificação"}, false}
     };
     pergunta QuestoesP[5] = {
-      {210, 410, "Qual o maior animal terrestre do Pantanal", 1, {"1) Onça-pintada", "2) Capivara", "3) Jacaré", "4) Arara-azul"}, false},
-      {210, 410, "Qual é o bioma mais extenso do mundo em áreas alagadas?", 3, {"1) Amazônia", "2) Cerrado", "3) Pantanal", "4) Caatinga"}, false},
+      {210, 410, "Qual o maior animal terrestre do Pantanal", 0, {"1) Onça-pintada", "2) Capivara", "3) Jacaré", "4) Arara-azul"}, false},
+      {210, 410, "Qual é o bioma mais extenso do mundo em áreas alagadas?", 2, {"1) Amazônia", "2) Cerrado", "3) Pantanal", "4) Caatinga"}, false},
       {210, 410, "Em quais países o Pantanal está localizado?", 2, {"1) Brasil, Argentina e Uruguai", "2) Brasil, Bolívia e Paraguai", "3) Brasil, Peru e Colômbia", "4) Brasil, Chile e Venezuela"}, false},
-      {210, 410, "Qual animal é mencionado como habitante do Pantanal?", 1, {"1) Onça-pintada", "2) Urso polar", "3) Canguru", "4) Leão"}, false},
-      {210, 410, "Qual a estação mais chuvosa no Pantanal?", 2, {"1) Primavera", "2) Verão", "3) Outono", "4) Inverno"}, false}
+      {210, 410, "Qual animal é mencionado como habitante do Pantanal?", 2, {"1) Onça-pintada", "2) Urso polar", "3) Canguru", "4) Leão"}, false},
+      {210, 410, "Qual a estação mais chuvosa no Pantanal?", 1, {"1) Primavera", "2) Verão", "3) Outono", "4) Inverno"}, false}
     };
 
 
@@ -257,9 +260,12 @@ int main(int argc, char** argv) {
         al_play_sample_instance(recursos.inst_som_menu);
     }
 
+    /*al_register_event_source(recursos.event_queue, al_get_timer_event_source(recursos.timer));*/
     al_register_event_source(recursos.event_queue, al_get_display_event_source(recursos.display));
     al_register_event_source(recursos.event_queue, al_get_mouse_event_source());
     al_register_event_source(recursos.event_queue, al_get_keyboard_event_source());
+
+   /* al_start_timer(recursos.timer);*/
 
     while (jogo_rodando) {
         ALLEGRO_EVENT event;
@@ -269,9 +275,9 @@ int main(int argc, char** argv) {
             jogo_rodando = false;
         }
 
-        if (event.type == ALLEGRO_EVENT_KEY_DOWN || event.type == ALLEGRO_EVENT_KEY_UP) {
+        /*if (event.type == ALLEGRO_EVENT_KEY_DOWN || event.type == ALLEGRO_EVENT_KEY_UP) {
             movimento_personagem(event); 
-        }
+        }*/
 
         if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
             if (tela == 0) {
@@ -417,7 +423,7 @@ int main(int argc, char** argv) {
         else if (tela == 5) { // AMAZONIA
             al_draw_bitmap(recursos.img_amazonia, 0, 0, 0);
             movimento_personagem(event);
-            al_draw_bitmap_region(recursos.SPRITE, 128 * (int)mov_prs.frame, mov_prs.current_frame_y, 128, 128, mov_prs.pos_x, mov_prs.pos_y, 0);
+            al_draw_bitmap_region(recursos.SPRITE, 41.33 * (int)mov_prs.frame, mov_prs.current_frame_y, 41.33, 36, mov_prs.pos_x, mov_prs.pos_y, 0);
 
             if (esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_amazonia_01) ||
                 esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_amazonia_02) ||
@@ -469,9 +475,13 @@ int main(int argc, char** argv) {
             }
         }
 
+       /* if (event.type == ALLEGRO_EVENT_TIMER && tela == 3) {
+            desenhar_bois_e_mover(&recursos, bois);
+        }*/
         else if (tela == 3) { // PAMPA
             al_draw_bitmap(recursos.img_pampa, 0, 0, 0);
             movimento_personagem(event);
+            desenhar_bois_e_mover(&recursos, bois);
 
             if (esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_pampa_01) ||
                 esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_pampa_02) ||
@@ -485,9 +495,8 @@ int main(int argc, char** argv) {
                 printf("Evento --> Area Bloqueada, Voltando ao inicio.\n");
             }
 
-
-            desenhar_bois_e_mover(&recursos, bois);
-            al_draw_bitmap_region(recursos.SPRITE, 128 * (int)mov_prs.frame, mov_prs.current_frame_y, 128, 128, mov_prs.pos_x, mov_prs.pos_y, 0);
+            
+            al_draw_bitmap_region(recursos.SPRITE, 41.33 * (int)mov_prs.frame, mov_prs.current_frame_y, 41.33, 36, mov_prs.pos_x, mov_prs.pos_y, 0);
 
             // SISTEMA -> MUDANÇA DE MAPA
             int aprox = 100.0f;
@@ -512,7 +521,9 @@ int main(int argc, char** argv) {
 
         else if (tela == 4) {// PANTANAL
             al_draw_bitmap(recursos.img_pantanal, 0, 0, 0);
+          /*  if (event.type == ALLEGRO_EVENT_TIMER) {*/
             jacare_mover(&recursos, jacare);
+         /*   }*/
 
             if (sapo.pulo) {
                 sapo.y += sapo.velocidade_puloY;
@@ -530,6 +541,14 @@ int main(int argc, char** argv) {
             if (event.keyboard.keycode == ALLEGRO_KEY_LEFT) {
                 sapo.courrent_frame = 64;
                 sapo.x -= 5;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_DOWN) {
+                sapo.courrent_frame = 64;
+                sapo.y += 5;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_UP) {
+                sapo.courrent_frame = 64;
+                sapo.y -= 5;
             }
             if (event.keyboard.keycode == ALLEGRO_KEY_SPACE && !sapo.pulo) {
                 sapo.pulo = true;
@@ -564,7 +583,7 @@ int main(int argc, char** argv) {
                         printf("Resposta esta Correto!\n");
                     }
                     else {
-                        printf("Resposta Esta errada\n");
+                        printf("Resposta Esta Errada\n");
                     }
                     pergunta_atual->respondido = true;
                     exibindo_perguntas = false;
@@ -611,7 +630,7 @@ int main(int argc, char** argv) {
         else if (tela == 6) { // CAATINGA
             al_draw_bitmap(recursos.img_caatinga, 0, 0, 0);
             movimento_personagem(event);
-            al_draw_bitmap_region(recursos.SPRITE, 128 * (int)mov_prs.frame, mov_prs.current_frame_y, 128, 128, mov_prs.pos_x, mov_prs.pos_y, 0);
+            al_draw_bitmap_region(recursos.SPRITE, 41.33 * (int)mov_prs.frame, mov_prs.current_frame_y, 41.33, 36, mov_prs.pos_x, mov_prs.pos_y, 0);
 
             if (esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_caatinga_01) ||
                 esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_caatinga_02) ||

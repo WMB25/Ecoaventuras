@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <allegro5/allegro.h>
-#include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 #include <allegro5/keyboard.h>
+#include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include <time.h>
+#include <math.h>
 
+// Struct para agrupar os ponteiros 
 typedef struct {
     ALLEGRO_SAMPLE* som_menu;
     ALLEGRO_SAMPLE_INSTANCE* inst_som_menu;
@@ -21,7 +24,7 @@ typedef struct {
     ALLEGRO_BITMAP* img_pantanal;
     ALLEGRO_BITMAP* img_pampa;
     ALLEGRO_BITMAP* img_caatinga;
-	ALLEGRO_BITMAP* img_boi;
+    ALLEGRO_BITMAP* img_boi;
     ALLEGRO_BITMAP* img_sobre_biomas;
     ALLEGRO_FONT* font;
     ALLEGRO_BITMAP* img_amazonia;
@@ -35,15 +38,16 @@ typedef struct {
     ALLEGRO_BITMAP* img_jacare;
     ALLEGRO_BITMAP* img_fim;
     ALLEGRO_BITMAP* pergunta1;
-    ALLEGRO_BITMAP * pergunta2;
-    ALLEGRO_BITMAP * pergunta3;
-    ALLEGRO_BITMAP * pergunta4;
-    ALLEGRO_BITMAP * pergunta5;
-    ALLEGRO_BITMAP * pergunta6;
-    ALLEGRO_BITMAP * pergunta7;
-    ALLEGRO_BITMAP * pergunta8;
-    ALLEGRO_BITMAP * pergunta9;
-    ALLEGRO_BITMAP * pergunta10;
+    ALLEGRO_BITMAP* pergunta2;
+    ALLEGRO_BITMAP* pergunta3;
+    ALLEGRO_BITMAP* pergunta4;
+    ALLEGRO_BITMAP* pergunta5;
+    ALLEGRO_BITMAP* pergunta6;
+    ALLEGRO_BITMAP* pergunta7;
+    ALLEGRO_BITMAP* pergunta8;
+    ALLEGRO_BITMAP* pergunta9;
+    ALLEGRO_BITMAP* pergunta10;
+   /* ALLEGRO_TIMER* timer;*/
 } AllegroRecursos;
 
 int inicializar_componentes_allegro(AllegroRecursos* recursos) {
@@ -99,6 +103,12 @@ int inicializar_componentes_allegro(AllegroRecursos* recursos) {
         printf("Erro ao iniciar Leitor De fontes Externa!\n");
     }
 
+
+   /* recursos->timer = al_create_timer(1.0 / 10);
+    if (!recursos->timer) {
+        printf("Erro ao iniciar timer!\n");
+        return -1;
+    }*/
     recursos->background = al_load_bitmap("menu.jpeg");
     if (!recursos->background) {
         fprintf(stderr, "Falha ao carregar a imagem de fundo!\n");

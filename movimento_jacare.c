@@ -1,19 +1,23 @@
 #include <stdio.h>
-#include <math.h> 
+#include <stdlib.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
-#include <allegro5/allegro_primitives.h>
+#include <allegro5/keyboard.h>
 #include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
+#include <time.h>
+#include <math.h>
 
+// Struct para agrupar os ponteiros 
 typedef struct {
     ALLEGRO_SAMPLE* som_menu;
     ALLEGRO_SAMPLE_INSTANCE* inst_som_menu;
     ALLEGRO_BITMAP* background;
     ALLEGRO_BITMAP* config_background;
     ALLEGRO_BITMAP* escolher_mapas_background;
-    ALLEGRO_BITMAP* bg_mapa_branco;
     ALLEGRO_BITMAP* imagem_grama;
     ALLEGRO_BITMAP* sprite_sapo;
     ALLEGRO_BITMAP* grama_amazonia;
@@ -33,8 +37,18 @@ typedef struct {
     ALLEGRO_BITMAP* img_sobre_amazonia;
     ALLEGRO_BITMAP* img_jacare;
     ALLEGRO_BITMAP* img_fim;
+    ALLEGRO_BITMAP* pergunta1;
+    ALLEGRO_BITMAP* pergunta2;
+    ALLEGRO_BITMAP* pergunta3;
+    ALLEGRO_BITMAP* pergunta4;
+    ALLEGRO_BITMAP* pergunta5;
+    ALLEGRO_BITMAP* pergunta6;
+    ALLEGRO_BITMAP* pergunta7;
+    ALLEGRO_BITMAP* pergunta8;
+    ALLEGRO_BITMAP* pergunta9;
+    ALLEGRO_BITMAP* pergunta10;
+   /* ALLEGRO_TIMER* timer;*/
 } AllegroRecursos;
-
 
 
 #define quantidade_jacare 2

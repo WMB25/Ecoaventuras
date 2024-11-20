@@ -8,7 +8,10 @@
 #include <allegro5/keyboard.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include <time.h>
+#include <math.h>
 
+// Struct para agrupar os ponteiros 
 typedef struct {
     ALLEGRO_SAMPLE* som_menu;
     ALLEGRO_SAMPLE_INSTANCE* inst_som_menu;
@@ -44,6 +47,7 @@ typedef struct {
     ALLEGRO_BITMAP* pergunta8;
     ALLEGRO_BITMAP* pergunta9;
     ALLEGRO_BITMAP* pergunta10;
+   /* ALLEGRO_TIMER* timer;*/
 } AllegroRecursos;
 
 
@@ -80,5 +84,10 @@ void limpar_recursos(AllegroRecursos* recursos) {
     al_destroy_bitmap(recursos->pergunta9);
     al_destroy_bitmap(recursos->pergunta10);
     al_destroy_display(recursos->display);
+    /*al_destroy_timer(recursos->timer);*/
     al_destroy_event_queue(recursos->event_queue);
+    al_uninstall_mouse();
+    al_uninstall_audio();
+    al_uninstall_keyboard();
+    al_uninstall_system();
 }

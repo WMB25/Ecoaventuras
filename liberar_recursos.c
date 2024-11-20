@@ -15,7 +15,6 @@ typedef struct {
     ALLEGRO_BITMAP* background;
     ALLEGRO_BITMAP* config_background;
     ALLEGRO_BITMAP* escolher_mapas_background;
-    ALLEGRO_BITMAP* bg_mapa_branco;
     ALLEGRO_BITMAP* imagem_grama;
     ALLEGRO_BITMAP* sprite_sapo;
     ALLEGRO_BITMAP* grama_amazonia;
@@ -43,7 +42,6 @@ void limpar_recursos(AllegroRecursos* recursos) {
     al_destroy_bitmap(recursos->background);
     al_destroy_bitmap(recursos->config_background);
     al_destroy_bitmap(recursos->SPRITE);
-    al_destroy_bitmap(recursos->bg_mapa_branco);
     al_destroy_bitmap(recursos->img_pampa);
     al_destroy_bitmap(recursos->img_pantanal);
     al_destroy_bitmap(recursos->img_caatinga);

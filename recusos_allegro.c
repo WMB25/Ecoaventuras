@@ -16,7 +16,6 @@ typedef struct {
     ALLEGRO_BITMAP* background;
     ALLEGRO_BITMAP* config_background;
     ALLEGRO_BITMAP* escolher_mapas_background;
-    ALLEGRO_BITMAP* bg_mapa_branco;
     ALLEGRO_BITMAP* imagem_grama;
     ALLEGRO_BITMAP* sprite_sapo;
     ALLEGRO_BITMAP* grama_amazonia;
@@ -91,7 +90,7 @@ int inicializar_componentes_allegro(AllegroRecursos* recursos) {
         printf("Erro ao iniciar Leitor De fontes Externa!\n");
     }
 
-    recursos->background = al_load_bitmap("menu.png");
+    recursos->background = al_load_bitmap("menu.jpeg");
     if (!recursos->background) {
         fprintf(stderr, "Falha ao carregar a imagem de fundo!\n");
         return -1;
@@ -171,12 +170,6 @@ int inicializar_componentes_allegro(AllegroRecursos* recursos) {
     recursos->grama_amazonia = al_load_bitmap("grama.png");
     if (!recursos->grama_amazonia) {
         fprintf(stderr, "Falha ao carregar a imagem da grama!\n");
-        return -1;
-    }
-
-    recursos->bg_mapa_branco = al_load_bitmap("bg_mapa_branco.png");
-    if (!recursos->bg_mapa_branco) {
-        fprintf(stderr, "Falha ao carregar a imagem de fundo branco!\n");
         return -1;
     }
 

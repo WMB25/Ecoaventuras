@@ -16,7 +16,6 @@ typedef struct {
     ALLEGRO_BITMAP* background;
     ALLEGRO_BITMAP* config_background;
     ALLEGRO_BITMAP* escolher_mapas_background;
-    ALLEGRO_BITMAP* bg_mapa_branco;
     ALLEGRO_BITMAP* imagem_grama;
     ALLEGRO_BITMAP* sprite_sapo;
     ALLEGRO_BITMAP* grama_amazonia;
@@ -207,9 +206,8 @@ int main(int argc, char** argv) {
     } area;
 
     // Structs para areas clicáveis principal
-    area area_config = { 310, 500, 690, 150 };
-    area area_jogar = { 450, 150, 380, 150 };
-    area area_biomas = { 450, 320, 380, 150 };
+    area area_config = { 420, 420, 435, 180 };
+    area area_jogar = { 425, 220, 435, 180 };
     area area_desligar_som = { 320, 600, 220, 70 };
     area area_ligar_som = { 740, 600, 220, 70 };
     area area_voltar = { 165, 40, 200, 90 };
@@ -220,7 +218,7 @@ int main(int argc, char** argv) {
     area escolha_pantanal = { 5, 418, 630, 400 };
     area escolha_caatinga = { 645, 418, 630, 400 };
 
-    area proxima_fase_amazonia = { 1230, 200, 50, 300};
+    area proxima_fase_amazonia = { 1230, 200, 100, 300};
     area proxima_fase_pampa = { 1184, 95, 30, 60 };
     area proxima_fase_pantanal = { 1230, 250, 55, 350 };
     area proxima_fase_caatinga = { 880, 420, 200, 200 };
@@ -250,8 +248,6 @@ int main(int argc, char** argv) {
     area_limite limite_pantanal_05 = { 600, 95, 120, 150 }; 
     //area_limite limite_pantanal_06 = { 210, 410, 100, 100 }; AREA FLOR DO PANTANAL
 
-
-
     al_set_sample_instance_playmode(recursos.inst_som_menu, ALLEGRO_PLAYMODE_LOOP);
     al_attach_sample_instance_to_mixer(recursos.inst_som_menu, al_get_default_mixer());
 
@@ -272,7 +268,7 @@ int main(int argc, char** argv) {
         }
 
         if (event.type == ALLEGRO_EVENT_KEY_DOWN || event.type == ALLEGRO_EVENT_KEY_UP) {
-            movimento_personagem(event);  // Atualiza o movimento do personagem
+            movimento_personagem(event); 
         }
 
         if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
@@ -288,13 +284,6 @@ int main(int argc, char** argv) {
                     }
                 }
 
-                // area Biomas
-                if (event.mouse.x >= area_biomas.x && event.mouse.x <= area_biomas.x + area_biomas.largura &&
-                    event.mouse.y >= area_biomas.y && event.mouse.y <= area_biomas.y + area_biomas.altura) {
-                    printf("Evento --> Clique Registrado na area Biomas\n");
-                    tela = 100;
-                }
-
                 // area de Configurações
                 if (event.mouse.x >= area_config.x && event.mouse.x <= area_config.x + area_config.largura &&
                     event.mouse.y >= area_config.y && event.mouse.y <= area_config.y + area_config.altura) {
@@ -304,12 +293,6 @@ int main(int argc, char** argv) {
                         al_stop_sample_instance(recursos.inst_som_menu);
                         tocar_som_menu = false;
                     }
-                }
-
-                if (event.mouse.x >= area_config.x && event.mouse.x <= area_config.x + area_config.largura &&
-                    event.mouse.y >= area_config.y && event.mouse.y <= area_config.y + area_config.altura) {
-                    printf("Evento --> Clique Registrado na area biomas\n");
-                    tela = 10;
                 }
             }
             else if (tela == 1) {
@@ -381,12 +364,15 @@ int main(int argc, char** argv) {
 
         if (tela == 0) { // INICIO
             al_draw_bitmap(recursos.background, 0, 0, 0);
+
+            //ALLEGRO_COLOR cor_area = al_map_rgb(255, 0, 0);
+            //al_draw_filled_rectangle(area_config.x, area_config.y, area_config.x + area_config.largura, area_config.y + area_config.altura, cor_area);
         }
 
         else if (tela == 1) { // CONFIGURAÇÕES
             al_draw_bitmap(recursos.config_background, 0, 0, 0);
         }
-        if (tela == 100) { // BIOMAS
+        if (tela == 2) { // BIOMAS
             al_draw_bitmap(recursos.img_sobre_amazonia, 0, 0, 0);
 
             if (verificar_clique_na_area(event, &proximo_biomas)) {
@@ -418,10 +404,11 @@ int main(int argc, char** argv) {
 
             if (verificar_clique_na_area(event, &proximo_biomas)) {
                 printf("Evento --> Clique Registrado na area proximo\n");
+                tela = 100;
             }
         }
 
-        else if (tela == 2) { // ESCOLHER MAPA
+        else if (tela == 100) { // ESCOLHER MAPA
             al_draw_bitmap(recursos.escolher_mapas_background, 0, 0, 0);
         }
 
@@ -472,7 +459,7 @@ int main(int argc, char** argv) {
             
             al_flip_display();
             // SISTEMA -> MUDANÇA DE MAPA
-            int aprox = 20.0f;
+            int aprox = 100.0f;
             if (mov_prs.pos_x >= proxima_fase_amazonia.x - aprox && mov_prs.pos_x <= proxima_fase_amazonia.x + aprox &&
                 mov_prs.pos_y >= proxima_fase_amazonia.y - aprox && mov_prs.pos_y <= proxima_fase_amazonia.y + aprox) {
                 printf("Evento --> Mudando de Tela Pampa\n");
@@ -524,9 +511,6 @@ int main(int argc, char** argv) {
         else if (tela == 4) {// PANTANAL
             al_draw_bitmap(recursos.img_pantanal, 0, 0, 0);
             jacare_mover(&recursos, jacare);
-
-            //ALLEGRO_COLOR cor_area = al_map_rgb(255, 0, 0);
-            //al_draw_filled_rectangle(limite_pantanal_06.x, limite_pantanal_06.y, limite_pantanal_06.x + limite_pantanal_06.largura, limite_pantanal_06.y + limite_pantanal_06.altura, cor_area);
 
             if (sapo.pulo) {
                 sapo.y += sapo.velocidade_puloY;
@@ -660,7 +644,6 @@ int main(int argc, char** argv) {
 
         al_flip_display();
     }
-
 
     // LIMPA --> DESTROI TUDO DA MEMORIA
     limpar_recursos(&recursos);

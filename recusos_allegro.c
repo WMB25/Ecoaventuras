@@ -202,7 +202,7 @@ int inicializar_componentes_allegro(AllegroRecursos* recursos) {
         return -1;
     }
 
-    recursos->SPRITE = al_load_bitmap("Mili01.png");
+    recursos->SPRITE = al_load_bitmap("personagem.png");
     if (!recursos->SPRITE) {
         fprintf(stderr, "Falha ao carregar O PERSONAGEM!\n");
         return -1;

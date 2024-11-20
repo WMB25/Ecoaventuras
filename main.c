@@ -323,7 +323,7 @@ int main(int argc, char** argv) {
                     tocar_som_menu = true;
                 }
             }
-            else if (tela == 2) {
+            else if (tela == 100) {
                 // Verifica area de Clique --> Amazonia
                 if (event.mouse.x >= escolha_amazonia.x && event.mouse.x <= escolha_amazonia.x + escolha_amazonia.largura &&
                     event.mouse.y >= escolha_amazonia.y && event.mouse.y <= escolha_amazonia.y + escolha_amazonia.altura) {

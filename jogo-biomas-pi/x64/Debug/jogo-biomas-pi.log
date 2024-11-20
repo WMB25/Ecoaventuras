@@ -1,5 +1,2 @@
-﻿  main.c
-C:\Users\Administrator\Documents\Ecoaventuras\main.c(78,9): warning C4098: 'impressao_pergunta': função 'void' retornando um valor
-C:\Users\Administrator\Documents\Ecoaventuras\main.c(154,9): warning C4013: 'inicializar_componentes_allegro' indefinido; assumindo extern retornando int
-C:\Users\Administrator\Documents\Ecoaventuras\main.c(649,5): warning C4013: 'limpar_recursos' indefinido; assumindo extern retornando int
+﻿  movimento.c
   jogo-biomas-pi.vcxproj -> C:\Users\Administrator\Documents\Ecoaventuras\x64\Debug\jogo-biomas-pi.exe

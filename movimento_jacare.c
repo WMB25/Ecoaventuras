@@ -47,7 +47,7 @@ typedef struct {
     ALLEGRO_BITMAP* pergunta8;
     ALLEGRO_BITMAP* pergunta9;
     ALLEGRO_BITMAP* pergunta10;
-   /* ALLEGRO_TIMER* timer;*/
+    ALLEGRO_TIMER* timer;
 } AllegroRecursos;
 
 

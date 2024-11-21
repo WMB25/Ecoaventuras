@@ -47,7 +47,7 @@ typedef struct {
     ALLEGRO_BITMAP* pergunta8;
     ALLEGRO_BITMAP* pergunta9;
     ALLEGRO_BITMAP* pergunta10;
-   /* ALLEGRO_TIMER* timer;*/
+    ALLEGRO_TIMER* timer;
 } AllegroRecursos;
 
 int inicializar_componentes_allegro(AllegroRecursos* recursos) {
@@ -102,13 +102,11 @@ int inicializar_componentes_allegro(AllegroRecursos* recursos) {
     if (!al_init_ttf_addon()) {
         printf("Erro ao iniciar Leitor De fontes Externa!\n");
     }
-
-
-   /* recursos->timer = al_create_timer(1.0 / 10);
+    recursos->timer = al_create_timer(1.0 / 8);//estou entre 9 e 8 (um valor dentro deste intervalo pode ser perfeito (EX 8.55)!).
     if (!recursos->timer) {
         printf("Erro ao iniciar timer!\n");
         return -1;
-    }*/
+    }
     recursos->background = al_load_bitmap("menu.jpeg");
     if (!recursos->background) {
         fprintf(stderr, "Falha ao carregar a imagem de fundo!\n");

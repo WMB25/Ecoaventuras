@@ -47,7 +47,7 @@ typedef struct {
     ALLEGRO_BITMAP* pergunta8;
     ALLEGRO_BITMAP* pergunta9;
     ALLEGRO_BITMAP* pergunta10;
-   /* ALLEGRO_TIMER* timer;*/
+    ALLEGRO_TIMER* timer;
 } AllegroRecursos;
 
 // ISSO SERVE PRA DEFINIR CONSTANTES/VALORES -> DEIXA MAAIS FACIL DE MEXER NO CODIGO
@@ -260,12 +260,12 @@ int main(int argc, char** argv) {
         al_play_sample_instance(recursos.inst_som_menu);
     }
 
-    /*al_register_event_source(recursos.event_queue, al_get_timer_event_source(recursos.timer));*/
+    al_register_event_source(recursos.event_queue, al_get_timer_event_source(recursos.timer));
     al_register_event_source(recursos.event_queue, al_get_display_event_source(recursos.display));
     al_register_event_source(recursos.event_queue, al_get_mouse_event_source());
     al_register_event_source(recursos.event_queue, al_get_keyboard_event_source());
 
-   /* al_start_timer(recursos.timer);*/
+    al_start_timer(recursos.timer);
 
     while (jogo_rodando) {
         ALLEGRO_EVENT event;
@@ -464,8 +464,6 @@ int main(int argc, char** argv) {
                     }
              
             }
-            
-            al_flip_display();
             // SISTEMA -> MUDANÇA DE MAPA
             int aprox = 100.0f;
             if (mov_prs.pos_x >= proxima_fase_amazonia.x - aprox && mov_prs.pos_x <= proxima_fase_amazonia.x + aprox &&
@@ -475,13 +473,10 @@ int main(int argc, char** argv) {
             }
         }
 
-       /* if (event.type == ALLEGRO_EVENT_TIMER && tela == 3) {
-            desenhar_bois_e_mover(&recursos, bois);
-        }*/
         else if (tela == 3) { // PAMPA
             al_draw_bitmap(recursos.img_pampa, 0, 0, 0);
             movimento_personagem(event);
-            desenhar_bois_e_mover(&recursos, bois);
+           /* desenhar_bois_e_mover(&recursos, bois);*/
 
             if (esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_pampa_01) ||
                 esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_pampa_02) ||
@@ -518,13 +513,15 @@ int main(int argc, char** argv) {
                 }
             }
         }
+        if (event.type == ALLEGRO_EVENT_TIMER && tela == 3) {
+            /*al_draw_bitmap(recursos.img_pampa, 0, 0, 0);*/
+            desenhar_bois_e_mover(&recursos, bois);
+
+        }
 
         else if (tela == 4) {// PANTANAL
             al_draw_bitmap(recursos.img_pantanal, 0, 0, 0);
-          /*  if (event.type == ALLEGRO_EVENT_TIMER) {*/
-            jacare_mover(&recursos, jacare);
-         /*   }*/
-
+          
             if (sapo.pulo) {
                 sapo.y += sapo.velocidade_puloY;
                 sapo.velocidade_puloY += sapo.gravidade;
@@ -554,10 +551,10 @@ int main(int argc, char** argv) {
                 sapo.pulo = true;
                 sapo.velocidade_puloY = sapo.velocidade_puloX;
             }
-            sapo.frame += 0.3f;
-            if (sapo.frame > 3) {
-                sapo.frame -= 3;
-            }
+            //sapo.frame += 0.3f;
+            //if (sapo.frame > 3) {//
+            //    sapo.frame -= 3;
+            //}
             if (sapo.x < 0) {
                 sapo.x = 0;
             }
@@ -575,7 +572,8 @@ int main(int argc, char** argv) {
                 }
             }
             if (exibindo_perguntas && pergunta_atual != NULL) {
-                impressao_pergunta(pergunta_atual, recursos.font);
+                /*impressao_pergunta(pergunta_atual, recursos.font);*/
+                al_draw_bitmap(recursos.pergunta1, 400, 400, 0);
 
                 int resposta = event.keyboard.keycode - ALLEGRO_KEY_1;
                 if (resposta >= 0 && resposta < 4) {
@@ -624,8 +622,13 @@ int main(int argc, char** argv) {
                 printf("Evento --> Mudando de Tela Caatinga\n");
                 tela = 6;
             }
-            al_flip_display();
         }
+        if (event.type == ALLEGRO_EVENT_TIMER && tela == 4) {
+            // talvez de para trocar o valor do timer aqui
+            /*recursos.timer = al_create_timer(1 / 10);*/
+            jacare_mover(&recursos, jacare);
+        }
+
 
         else if (tela == 6) { // CAATINGA
             al_draw_bitmap(recursos.img_caatinga, 0, 0, 0);

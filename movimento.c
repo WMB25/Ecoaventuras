@@ -15,7 +15,7 @@ typedef struct {
     int pos_x, pos_y, current_frame_y;
 } mov_p;
 
-mov_p mov_prs = { 0.f, 300, 10, 36 };
+mov_p mov_prs = { 0.f, 33, 100, 36 };
 
 void movimento_personagem(ALLEGRO_EVENT event) {
 

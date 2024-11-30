@@ -11,45 +11,32 @@
 #include <time.h>
 #include <math.h>
 
-// Struct para agrupar os ponteiros 
 typedef struct {
-    ALLEGRO_SAMPLE* som_menu;
-    ALLEGRO_SAMPLE_INSTANCE* inst_som_menu;
     ALLEGRO_BITMAP* background;
     ALLEGRO_BITMAP* config_background;
     ALLEGRO_BITMAP* escolher_mapas_background;
-    ALLEGRO_BITMAP* imagem_grama;
     ALLEGRO_BITMAP* sprite_sapo;
-    ALLEGRO_BITMAP* grama_amazonia;
     ALLEGRO_BITMAP* img_pantanal;
     ALLEGRO_BITMAP* img_pampa;
     ALLEGRO_BITMAP* img_caatinga;
     ALLEGRO_BITMAP* img_boi;
     ALLEGRO_BITMAP* img_sobre_biomas;
-    ALLEGRO_FONT* font;
     ALLEGRO_BITMAP* img_amazonia;
-    ALLEGRO_BITMAP* SPRITE;
-    ALLEGRO_DISPLAY* display;
-    ALLEGRO_EVENT_QUEUE* event_queue;
     ALLEGRO_BITMAP* img_sobre_caatinga;
     ALLEGRO_BITMAP* img_sobre_pantanal;
     ALLEGRO_BITMAP* img_sobre_pampa;
     ALLEGRO_BITMAP* img_sobre_amazonia;
     ALLEGRO_BITMAP* img_jacare;
     ALLEGRO_BITMAP* img_fim;
-    ALLEGRO_BITMAP* pergunta1;
-    ALLEGRO_BITMAP* pergunta2;
-    ALLEGRO_BITMAP* pergunta3;
-    ALLEGRO_BITMAP* pergunta4;
-    ALLEGRO_BITMAP* pergunta5;
-    ALLEGRO_BITMAP* pergunta6;
-    ALLEGRO_BITMAP* pergunta7;
-    ALLEGRO_BITMAP* pergunta8;
-    ALLEGRO_BITMAP* pergunta9;
-    ALLEGRO_BITMAP* pergunta10;
-    //ALLEGRO_TIMER* timer;
+    ALLEGRO_BITMAP* fundo_pergunta;
+    ALLEGRO_BITMAP* SPRITE;
+    ALLEGRO_FONT* font;
+    ALLEGRO_TIMER* timer;
+    ALLEGRO_DISPLAY* display;
+    ALLEGRO_EVENT_QUEUE* event_queue;
+    ALLEGRO_SAMPLE* som_menu;
+    ALLEGRO_SAMPLE_INSTANCE* inst_som_menu;
 } AllegroRecursos;
-
 
 
 #define quantidade_bois 4

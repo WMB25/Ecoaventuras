@@ -11,43 +11,31 @@
 #include <time.h>
 #include <math.h>
 
-// Struct para agrupar os ponteiros 
 typedef struct {
-    ALLEGRO_SAMPLE* som_menu;
-    ALLEGRO_SAMPLE_INSTANCE* inst_som_menu;
     ALLEGRO_BITMAP* background;
     ALLEGRO_BITMAP* config_background;
     ALLEGRO_BITMAP* escolher_mapas_background;
-    ALLEGRO_BITMAP* imagem_grama;
     ALLEGRO_BITMAP* sprite_sapo;
-    ALLEGRO_BITMAP* grama_amazonia;
     ALLEGRO_BITMAP* img_pantanal;
     ALLEGRO_BITMAP* img_pampa;
     ALLEGRO_BITMAP* img_caatinga;
     ALLEGRO_BITMAP* img_boi;
     ALLEGRO_BITMAP* img_sobre_biomas;
-    ALLEGRO_FONT* font;
     ALLEGRO_BITMAP* img_amazonia;
-    ALLEGRO_BITMAP* SPRITE;
-    ALLEGRO_DISPLAY* display;
-    ALLEGRO_EVENT_QUEUE* event_queue;
     ALLEGRO_BITMAP* img_sobre_caatinga;
     ALLEGRO_BITMAP* img_sobre_pantanal;
     ALLEGRO_BITMAP* img_sobre_pampa;
     ALLEGRO_BITMAP* img_sobre_amazonia;
     ALLEGRO_BITMAP* img_jacare;
     ALLEGRO_BITMAP* img_fim;
-    ALLEGRO_BITMAP* pergunta1;
-    ALLEGRO_BITMAP* pergunta2;
-    ALLEGRO_BITMAP* pergunta3;
-    ALLEGRO_BITMAP* pergunta4;
-    ALLEGRO_BITMAP* pergunta5;
-    ALLEGRO_BITMAP* pergunta6;
-    ALLEGRO_BITMAP* pergunta7;
-    ALLEGRO_BITMAP* pergunta8;
-    ALLEGRO_BITMAP* pergunta9;
-    ALLEGRO_BITMAP* pergunta10;
+    ALLEGRO_BITMAP* fundo_pergunta;
+    ALLEGRO_BITMAP* SPRITE;
+    ALLEGRO_FONT* font;
     ALLEGRO_TIMER* timer;
+    ALLEGRO_DISPLAY* display;
+    ALLEGRO_EVENT_QUEUE* event_queue;
+    ALLEGRO_SAMPLE* som_menu;
+    ALLEGRO_SAMPLE_INSTANCE* inst_som_menu;
 } AllegroRecursos;
 
 // ISSO SERVE PRA DEFINIR CONSTANTES/VALORES -> DEIXA MAAIS FACIL DE MEXER NO CODIGO
@@ -82,24 +70,49 @@ typedef struct {
     char opcoesDasQuestoes[5][100];
     bool respondido;
 }pergunta;
+void impressao_pergunta(pergunta* questoes, ALLEGRO_FONT* font, ALLEGRO_BITMAP* fundo ) {
+    const int larguraT = 1280; 
+    const int alturaT = 800;  
 
-void impressao_pergunta(pergunta* questoes, ALLEGRO_FONT* font) {
+    const int larguraFundo = 800;
+    const int alturaFundo = 400;
 
-    int largura_questoes = al_get_text_width(font, questoes->Questoes);
-    int pos_x = (1280 - largura_questoes) / 2;
-    int pos_y = questoes->y;
+    const int larguraAlt = 300;
+    const int alturaAlt = 50;
+    const int espacoEntreAlt = 20;
 
-    al_draw_text(font, al_map_rgb(0, 0, 0), pos_x, pos_y, 0, questoes->Questoes);
+    int pos_x_fundo = (larguraT - larguraFundo) / 2;
+    int pos_y_fundo = (alturaT - alturaFundo) / 4;
 
-    int coluna_questoesOP_X = 200;
-    int espaco_questoesOP_Y = 40;
+    al_draw_scaled_bitmap(fundo,0, 0,al_get_bitmap_width(fundo), al_get_bitmap_height(fundo), pos_x_fundo, pos_y_fundo, larguraFundo, alturaFundo, 0);
 
+    int larguraPergunta = al_get_text_width(font, questoes->Questoes);
+    int alturaTexto = al_get_font_line_height(font);
+
+    int pos_x_texto = pos_x_fundo + (larguraFundo - larguraPergunta) / 12;
+    int pos_y_texto = pos_y_fundo + (alturaTexto / 4) + 50;
+
+    al_draw_text(font, al_map_rgb(255, 255, 255), pos_x_texto, pos_y_texto, 0, questoes->Questoes);
+
+    int pos_x_alt = pos_x_fundo + (larguraFundo - 2 * larguraAlt - espacoEntreAlt) / 2;
+    int pos_y_alt = pos_y_fundo + alturaFundo / 2;
+
+    
     for (int i = 0; i < 4; i++) {
-        int pos_x_questoes = (i < 2) ? pos_x : pos_x + coluna_questoesOP_X;
-        int pos_y_questoes = pos_y + (i % 2 + 1) * espaco_questoesOP_Y;
+        int coluna = i % 2;  
+        int linha = i / 2;   
 
-        al_draw_filled_rectangle(pos_x_questoes - 10, pos_y_questoes - 10, pos_x_questoes + 200, pos_y_questoes + 30, al_map_rgb(10, 220, 20));
-        al_draw_text(font, al_map_rgb(0, 0, 0), pos_x_questoes, pos_y_questoes, 0, questoes->opcoesDasQuestoes[i]);
+        int x_alt = pos_x_alt + coluna * (larguraAlt + espacoEntreAlt);
+        int y_alt = pos_y_alt + linha * (alturaAlt + espacoEntreAlt);
+
+        
+        int larguraTextoAlt = al_get_text_width(font, questoes->opcoesDasQuestoes[i]);
+        int alturaTextoAlt = al_get_font_line_height(font);
+
+        int x_texto = x_alt + (larguraAlt - larguraTextoAlt) / 2;
+        int y_texto = y_alt + (alturaAlt - alturaTextoAlt) / 2;
+
+        al_draw_text(font, al_map_rgb(255, 255, 255), x_texto, y_texto, 0, questoes->opcoesDasQuestoes[i]);
     }
 }
 bool proximidade_pergunta(int pos_x, int pos_y, pergunta* posicao) {
@@ -133,7 +146,6 @@ frog sapo = { 64, 64, 4, 0.f, 64, 20, 400, -5.0f, -0.0f, 0.5f, false };
 typedef struct {
     int x, y, largura, altura;
 } area_limite;
-
 bool esta_em_area_bloqueada(int pos_x, int pos_y, area_limite* area_bloqueada) {
     if (pos_x >= area_bloqueada->x && pos_x <= area_bloqueada->x + area_bloqueada->largura &&
         pos_y >= area_bloqueada->y && pos_y <= area_bloqueada->y + area_bloqueada->altura) {
@@ -154,21 +166,17 @@ bool verificar_clique_na_area(ALLEGRO_EVENT event, area_limite* area) {
     return false;
 }
 
-
 int main(int argc, char** argv) {
     AllegroRecursos recursos;
     inicializar_componentes_allegro(&recursos);
-
 
     // AREA --> VARIAVEIS DE CONTROLE
     int tela = 0;
     bool jogo_rodando = true;
     bool tocar_som_menu = false;
 
-
     boi bois[quantidade_bois]; // Array de bois
     inicializar_bois(bois, &recursos);
-
 
     jacare jacare[quantidade_jacare];
     inicializar_jacare(jacare, &recursos);
@@ -185,11 +193,11 @@ int main(int argc, char** argv) {
     void movimento_personagem(ALLEGRO_EVENT event); // Chamando a função de movimentar o personagem
 
     pergunta QuestoesA[5] = {
-          {85, 260, "Qual a proporção do território brasileiro ocupada pela Amazônia ?", 1, {"1) 25%", "2) 49%", "3) 60%", "4) 75%"}, false},
-          {470, 110, "Qual animal é conhecido como o maior felino da Amazônia ?", 1, {"1) Tamanduá-bandeira", "2) Onça-pintada", "3) Macaco-aranha", "4) Arara-azul"}, false},
-          {510, 650, "Qual desses é um recurso natural da Amazônia ?", 2, {"1) Petróleo", "2) Madeira", "3) Gás natural", "4) Ferro"}, false},
-          {820, 360, "Qual é uma das principais ameaças ao bioma amazônico ?", 2, {"1) Plantação de soja", "2) Turismo sustentável", "3) Desmatamento", "4) Energia solar."}, false},
-          {1110, 330, "Qual é o papel da Amazônia no clima global ?", 2, {"1) Produção de petróleo", "2) Controle de ventos", "3) Produção de oxigênio e regulação da água", "4) Estímulo à desertificação"}, false}
+          {85, 260, "Qual a proporção do território brasileiro ocupada pela Amazônia?", 1, {"1) 25%", "2) 49%", "3) 60%", "4) 75%"}, false},
+          {470, 110, "Qual animal é conhecido como o maior felino da Amazônia?", 1, {"1) Tamanduá-bandeira", "2) Onça-pintada", "3) Macaco-aranha", "4) Arara-azul"}, false},
+          {510, 650, "Qual desses é um recurso natural da Amazônia?", 2, {"1) Petróleo", "2) Madeira", "3) Gás natural", "4) Ferro"}, false},
+          {820, 360, "Qual é uma das principais ameaças ao bioma amazônico?", 2, {"1) Plantação de soja", "2) Turismo sustentável", "3) Desmatamento", "4) Energia solar."}, false},
+          {1110, 330, "Quem são os povos originarios?", 2, {"1) Os maori", "2) Os aborígenes", "3) Os indíginas", "4) Os toltecas"}, false}
     };
     pergunta QuestoesP[5] = {
       {210, 410, "Qual o maior animal terrestre do Pantanal", 0, {"1) Onça-pintada", "2) Capivara", "3) Jacaré", "4) Arara-azul"}, false},
@@ -198,8 +206,6 @@ int main(int argc, char** argv) {
       {210, 410, "Qual animal é mencionado como habitante do Pantanal?", 2, {"1) Onça-pintada", "2) Urso polar", "3) Canguru", "4) Leão"}, false},
       {210, 410, "Qual a estação mais chuvosa no Pantanal?", 1, {"1) Primavera", "2) Verão", "3) Outono", "4) Inverno"}, false}
     };
-
-
     int quantidade_perguntaA = sizeof(QuestoesA) / sizeof(QuestoesA[0]);
     int quantidade_perguntaP = sizeof(QuestoesP) / sizeof(QuestoesP[0]);
     pergunta* pergunta_atual = NULL;
@@ -273,11 +279,7 @@ int main(int argc, char** argv) {
 
         if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
             jogo_rodando = false;
-        }
-
-        /*if (event.type == ALLEGRO_EVENT_KEY_DOWN || event.type == ALLEGRO_EVENT_KEY_UP) {
-            movimento_personagem(event); 
-        }*/
+        }       
 
         if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
             if (tela == 0) {
@@ -380,6 +382,7 @@ int main(int argc, char** argv) {
         else if (tela == 1) { // CONFIGURAÇÕES
             al_draw_bitmap(recursos.config_background, 0, 0, 0);
         }
+        
         if (tela == 2) { // BIOMAS
             al_draw_bitmap(recursos.img_sobre_amazonia, 0, 0, 0);
 
@@ -434,7 +437,7 @@ int main(int argc, char** argv) {
                 mov_prs.pos_y = 100;
                 printf("Evento --> Area Bloqueada, Voltando ao inicio.\n");
             }
-           
+                       
             if (!exibindo_perguntas) {
                 pergunta_atual = NULL;
                 for (int i = 0; i < quantidade_perguntaA; i++) {
@@ -446,7 +449,7 @@ int main(int argc, char** argv) {
                 }
             }
             if (exibindo_perguntas && pergunta_atual != NULL) {  
-                    impressao_pergunta(pergunta_atual, recursos.font);
+                    impressao_pergunta(pergunta_atual, recursos.font, recursos.fundo_pergunta);
 
                     int resposta = event.keyboard.keycode - ALLEGRO_KEY_1;
                     if (resposta >= 0 && resposta < 4) {
@@ -456,7 +459,6 @@ int main(int argc, char** argv) {
                         }
                         else {
                             printf("Resposta Esta errada\n");
-                            
                         }
                         pergunta_atual->respondido = true;
                         exibindo_perguntas = false;
@@ -572,8 +574,7 @@ int main(int argc, char** argv) {
                 }
             }
             if (exibindo_perguntas && pergunta_atual != NULL) {
-                /*impressao_pergunta(pergunta_atual, recursos.font);*/
-                al_draw_bitmap(recursos.pergunta1, 400, 400, 0);
+                impressao_pergunta(pergunta_atual, recursos.font, recursos.fundo_pergunta);
 
                 int resposta = event.keyboard.keycode - ALLEGRO_KEY_1;
                 if (resposta >= 0 && resposta < 4) {
@@ -623,13 +624,10 @@ int main(int argc, char** argv) {
                 tela = 6;
             }
         }
-        if (event.type == ALLEGRO_EVENT_TIMER && tela == 4) {
-            // talvez de para trocar o valor do timer aqui
-            /*recursos.timer = al_create_timer(1 / 10);*/
+        if (tela == 4) {
             jacare_mover(&recursos, jacare);
         }
-
-
+        
         else if (tela == 6) { // CAATINGA
             al_draw_bitmap(recursos.img_caatinga, 0, 0, 0);
             movimento_personagem(event);
@@ -653,7 +651,7 @@ int main(int argc, char** argv) {
                 tela = 999;
             }
         }
-
+        
         else if (tela == 999) {
             al_draw_bitmap(recursos.img_fim, 0, 0, 0);
 

@@ -74,7 +74,7 @@ void impressao_pergunta(pergunta* questoes, ALLEGRO_FONT* font, ALLEGRO_BITMAP* 
     const int larguraT = 1280; 
     const int alturaT = 800;  
 
-    const int larguraFundo = 800;
+    const int larguraFundo = 1000;
     const int alturaFundo = 400;
 
     const int larguraAlt = 300;
@@ -83,13 +83,13 @@ void impressao_pergunta(pergunta* questoes, ALLEGRO_FONT* font, ALLEGRO_BITMAP* 
 
     int pos_x_fundo = (larguraT - larguraFundo) / 2;
     int pos_y_fundo = (alturaT - alturaFundo) / 4;
-
+    
     al_draw_scaled_bitmap(fundo,0, 0,al_get_bitmap_width(fundo), al_get_bitmap_height(fundo), pos_x_fundo, pos_y_fundo, larguraFundo, alturaFundo, 0);
 
     int larguraPergunta = al_get_text_width(font, questoes->Questoes);
     int alturaTexto = al_get_font_line_height(font);
 
-    int pos_x_texto = pos_x_fundo + (larguraFundo - larguraPergunta) / 12;
+    int pos_x_texto = pos_x_fundo + (larguraFundo - larguraPergunta + 500) / 12;
     int pos_y_texto = pos_y_fundo + (alturaTexto / 4) + 50;
 
     al_draw_text(font, al_map_rgb(255, 255, 255), pos_x_texto, pos_y_texto, 0, questoes->Questoes);
@@ -524,6 +524,31 @@ int main(int argc, char** argv) {
         else if (tela == 4) {// PANTANAL
             al_draw_bitmap(recursos.img_pantanal, 0, 0, 0);
           
+            if (!exibindo_perguntas) {
+                for (int i = 0; i < quantidade_perguntaP; i++) {
+                    if (!QuestoesP[i].respondido && proximidade_pergunta(sapo.x, sapo.y, &QuestoesP[i])) {
+                        pergunta_atual = &QuestoesP[i];
+                        exibindo_perguntas = true;
+                        break;
+                    }
+                }
+            }
+            if (exibindo_perguntas && pergunta_atual != NULL) {
+                impressao_pergunta(pergunta_atual, recursos.font, recursos.fundo_pergunta);
+
+                int resposta = event.keyboard.keycode - ALLEGRO_KEY_1;
+                if (resposta >= 0 && resposta < 4) {
+                    if (verificar_resposta(pergunta_atual, resposta)) {
+                        printf("Resposta esta Correto!\n");
+                    }
+                    else {
+                        printf("Resposta Esta Errada\n");
+                    }
+                    pergunta_atual->respondido = true;
+                    exibindo_perguntas = false;
+                    pergunta_atual = NULL;
+                }
+            }
             if (sapo.pulo) {
                 sapo.y += sapo.velocidade_puloY;
                 sapo.velocidade_puloY += sapo.gravidade;
@@ -553,41 +578,11 @@ int main(int argc, char** argv) {
                 sapo.pulo = true;
                 sapo.velocidade_puloY = sapo.velocidade_puloX;
             }
-            //sapo.frame += 0.3f;
-            //if (sapo.frame > 3) {//
-            //    sapo.frame -= 3;
-            //}
             if (sapo.x < 0) {
                 sapo.x = 0;
             }
             else if (sapo.x > 1280 - sapo.frame) {
                 sapo.x = 1280 - sapo.frame;
-            }
-
-            if (!exibindo_perguntas) {
-                for (int i = 0; i < quantidade_perguntaP; i++) {
-                    if (!QuestoesP[i].respondido && proximidade_pergunta(sapo.x, sapo.y, &QuestoesP[i])) {
-                        pergunta_atual = &QuestoesP[i];
-                        exibindo_perguntas = true;
-                        break;
-                    }
-                }
-            }
-            if (exibindo_perguntas && pergunta_atual != NULL) {
-                impressao_pergunta(pergunta_atual, recursos.font, recursos.fundo_pergunta);
-
-                int resposta = event.keyboard.keycode - ALLEGRO_KEY_1;
-                if (resposta >= 0 && resposta < 4) {
-                    if (verificar_resposta(pergunta_atual, resposta)) {
-                        printf("Resposta esta Correto!\n");
-                    }
-                    else {
-                        printf("Resposta Esta Errada\n");
-                    }
-                    pergunta_atual->respondido = true;
-                    exibindo_perguntas = false;
-                    pergunta_atual = NULL;
-                }
             }
 
             al_draw_bitmap_region(recursos.sprite_sapo, (int)(sapo.frame % sapo.num_frames) * sapo.frame_largura, 0, sapo.frame_largura, sapo.frame_altura, sapo.x, sapo.y, 0);
@@ -612,9 +607,6 @@ int main(int argc, char** argv) {
                     printf("Evento --> Colisão com o jacare, retornando à posição inicial.\n");
                 }
             }
-
-
-            //
 
             // SISTEMA -> MUDANÇA DE MAPA
             int aprox = 150.0f; 

@@ -1,2 +1,4 @@
-﻿  movimento.c
+﻿  main.c
+C:\Users\walis\OneDrive\Desktop\updats\Ecoaventuras\main.c(171,5): warning C4013: 'inicializar_componentes_allegro' indefinido; assumindo extern retornando int
+C:\Users\walis\OneDrive\Desktop\updats\Ecoaventuras\main.c(673,5): warning C4013: 'limpar_recursos' indefinido; assumindo extern retornando int
   jogo-biomas-pi.vcxproj -> C:\Users\walis\OneDrive\Desktop\updats\Ecoaventuras\x64\Debug\jogo-biomas-pi.exe

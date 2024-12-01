@@ -31,6 +31,7 @@ typedef struct {
     ALLEGRO_BITMAP* img_fim;
     ALLEGRO_BITMAP* fundo_pergunta;
     ALLEGRO_BITMAP* SPRITE;
+    ALLEGRO_BITMAP* logo;
     ALLEGRO_FONT* font;
     ALLEGRO_TIMER* timer;
     ALLEGRO_DISPLAY* display;

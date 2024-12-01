@@ -30,6 +30,7 @@ typedef struct {
     ALLEGRO_BITMAP* img_fim;
     ALLEGRO_BITMAP* fundo_pergunta;
     ALLEGRO_BITMAP* SPRITE;
+    ALLEGRO_BITMAP* logo;
     ALLEGRO_FONT* font;
     ALLEGRO_TIMER* timer;
     ALLEGRO_DISPLAY* display;
@@ -272,6 +273,8 @@ int main(int argc, char** argv) {
     al_register_event_source(recursos.event_queue, al_get_keyboard_event_source());
 
     al_start_timer(recursos.timer);
+    al_set_window_title(recursos.display, "Ecoaventuras");
+    al_set_display_icon(recursos.display, recursos.logo);
 
     while (jogo_rodando) {
         ALLEGRO_EVENT event;
@@ -478,7 +481,6 @@ int main(int argc, char** argv) {
         else if (tela == 3) { // PAMPA
             al_draw_bitmap(recursos.img_pampa, 0, 0, 0);
             movimento_personagem(event);
-           /* desenhar_bois_e_mover(&recursos, bois);*/
 
             if (esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_pampa_01) ||
                 esta_em_area_bloqueada(mov_prs.pos_x, mov_prs.pos_y, &limite_pampa_02) ||
@@ -516,12 +518,11 @@ int main(int argc, char** argv) {
             }
         }
         if (event.type == ALLEGRO_EVENT_TIMER && tela == 3) {
-            /*al_draw_bitmap(recursos.img_pampa, 0, 0, 0);*/
             desenhar_bois_e_mover(&recursos, bois);
-
         }
 
         else if (tela == 4) {// PANTANAL
+            al_stop_timer(recursos.timer);
             al_draw_bitmap(recursos.img_pantanal, 0, 0, 0);
           
             if (!exibindo_perguntas) {
@@ -540,6 +541,7 @@ int main(int argc, char** argv) {
                 if (resposta >= 0 && resposta < 4) {
                     if (verificar_resposta(pergunta_atual, resposta)) {
                         printf("Resposta esta Correto!\n");
+                        sapo.x+= 100;
                     }
                     else {
                         printf("Resposta Esta Errada\n");
@@ -549,6 +551,7 @@ int main(int argc, char** argv) {
                     pergunta_atual = NULL;
                 }
             }
+
             if (sapo.pulo) {
                 sapo.y += sapo.velocidade_puloY;
                 sapo.velocidade_puloY += sapo.gravidade;
@@ -584,6 +587,12 @@ int main(int argc, char** argv) {
             else if (sapo.x > 1280 - sapo.frame) {
                 sapo.x = 1280 - sapo.frame;
             }
+            if (tela == 4 && ALLEGRO_EVENT_TIMER) {
+                al_start_timer(recursos.timer);
+                jacare_mover(&recursos, jacare);
+            }
+            /*extern frog sapo;
+            iniciar_sapo(&recursos);*/
 
             al_draw_bitmap_region(recursos.sprite_sapo, (int)(sapo.frame % sapo.num_frames) * sapo.frame_largura, 0, sapo.frame_largura, sapo.frame_altura, sapo.x, sapo.y, 0);
 
@@ -616,9 +625,46 @@ int main(int argc, char** argv) {
                 tela = 6;
             }
         }
-        if (tela == 4) {
-            jacare_mover(&recursos, jacare);
-        }
+     \
+      /*  if (tela == 4) {
+            al_stop_timer(recursos.timer);
+                if (sapo.pulo) {
+                    sapo.y += sapo.velocidade_puloY;
+                    sapo.velocidade_puloY += sapo.gravidade;
+                    if (sapo.y >= 300) {
+                        sapo.y = 300;
+                        sapo.velocidade_puloY = 0;
+                        sapo.pulo = false;
+                    }
+                }
+            if (event.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
+                sapo.courrent_frame = 64;
+                sapo.x += 5;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_LEFT) {
+                sapo.courrent_frame = 64;
+                sapo.x -= 5;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_DOWN) {
+                sapo.courrent_frame = 64;
+                sapo.y += 5;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_UP) {
+                sapo.courrent_frame = 64;
+                sapo.y -= 5;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_SPACE && !sapo.pulo) {
+                sapo.pulo = true;
+                sapo.velocidade_puloY = sapo.velocidade_puloX;
+            }
+            if (sapo.x < 0) {
+                sapo.x = 0;
+            }
+            else if (sapo.x > 1280 - sapo.frame) {
+                sapo.x = 1280 - sapo.frame;
+            }
+           
+        }*/
         
         else if (tela == 6) { // CAATINGA
             al_draw_bitmap(recursos.img_caatinga, 0, 0, 0);

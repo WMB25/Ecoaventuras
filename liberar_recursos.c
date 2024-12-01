@@ -30,6 +30,7 @@ typedef struct {
     ALLEGRO_BITMAP* img_fim;
     ALLEGRO_BITMAP* fundo_pergunta;
     ALLEGRO_BITMAP* SPRITE;
+    ALLEGRO_BITMAP* logo;
     ALLEGRO_FONT* font;
     ALLEGRO_TIMER* timer;
     ALLEGRO_DISPLAY* display;
@@ -56,6 +57,7 @@ void limpar_recursos(AllegroRecursos* recursos) {
     al_destroy_bitmap(recursos->img_jacare);
     al_destroy_bitmap(recursos->img_fim);
     al_destroy_bitmap(recursos->fundo_pergunta);
+    al_destroy_bitmap(recursos->logo);
     al_destroy_font(recursos->font);
     al_destroy_sample(recursos->som_menu);
     al_destroy_sample_instance(recursos->inst_som_menu);

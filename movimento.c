@@ -51,9 +51,4 @@ void movimento_personagem(ALLEGRO_EVENT event) {
     if (mov_prs.pos_y + ALTURA_PERSONAGEM > ALTURA_TELA) {
         mov_prs.pos_y = ALTURA_TELA - ALTURA_PERSONAGEM;  
     }
-
-    //mov_prs.frame += 0.3f;
-    //if (mov_prs.frame > 3) {
-    //    mov_prs.frame -= 3;
-    //}
 }

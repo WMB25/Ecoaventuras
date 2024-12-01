@@ -148,6 +148,7 @@
     <ClCompile Include="movimento.c" />
     <ClCompile Include="movimento_boi.c" />
     <ClCompile Include="movimento_jacare.c" />
+    <ClCompile Include="movimento_sapo.c" />
     <ClCompile Include="recusos_allegro.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>

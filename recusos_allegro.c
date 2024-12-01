@@ -30,6 +30,7 @@ typedef struct {
     ALLEGRO_BITMAP* img_fim;
     ALLEGRO_BITMAP* fundo_pergunta;
     ALLEGRO_BITMAP* SPRITE;
+    ALLEGRO_BITMAP* logo;
     ALLEGRO_FONT* font;
     ALLEGRO_TIMER* timer;
     ALLEGRO_DISPLAY* display;
@@ -205,6 +206,12 @@ int inicializar_componentes_allegro(AllegroRecursos* recursos) {
     recursos->fundo_pergunta = al_load_bitmap("Fundopergunta.png");
     if (!recursos->fundo_pergunta) {
         printf("Erro ao carregar fundo da pergunta!");
+        return -1;
+    }
+
+    recursos->logo = al_load_bitmap("logo.png");
+    if (!recursos->logo) {
+        printf("Erro ao carregar imagem de Logo!");
         return -1;
     }
 
